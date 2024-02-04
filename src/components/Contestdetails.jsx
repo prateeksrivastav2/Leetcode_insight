@@ -13,6 +13,7 @@ const Contestdetails = () => {
     const [contestName, setContestName] = useState([]);
     const [avgSolved, setavgSolved] = useState([]);
     const [avgSolvedk, setavgSolvedk] = useState(0.0);
+    const [solved,setSolved] = useState([]);
 
     const setDetails = async () => {
         for (let contest of Contestdata.contestParticipation) {
@@ -32,6 +33,10 @@ const Contestdetails = () => {
                     return [...prevSolved, contest.problemsSolved];
              
             });
+            setSolved((prevSolved) => {
+                return [...prevSolved, contest.problemsSolved];
+         
+        });
         }
     };
 

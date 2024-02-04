@@ -19,7 +19,7 @@ const Home = () => {
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: ["row,column"],
           justifyContent: "center",
           boxSizing: "border-box",
           width: "100vw",
@@ -28,7 +28,7 @@ const Home = () => {
         {/* First Div (20vw) */}
         <div
           className="firstdiv box card"
-          style={{ width: "34vw",height:"60vh", backgroundColor: "lightdark", margin: "3vw 3vw 0vw 1vw",
+          style={{ width: "34vw",height:"60vh", backgroundColor: "lightdark", margin: "3vw 2vw 0vw 1vw",
           boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
         position:"relative",overflow:"hidden",
         background: 'linear-gradient(to bottom, #333, #000)', }}
@@ -48,6 +48,7 @@ const Home = () => {
       objectFit:"cover"
     }}
   />
+            <br />
             <h2>User Details</h2>
             <br />
             <p>*Username: {userdata.username}*</p>
@@ -64,7 +65,7 @@ const Home = () => {
         <div style={{alignItems:"center"}}>
         <Solved />
         </div>
-        <div className="box card" style={{width: "34vw",height:"60vh", backgroundColor: "lightdark", margin: "3vw 3vw 1vw 0vw",
+        <div className="box card" style={{width: "34vw",height:"60vh", backgroundColor: "lightdark", margin: "3vw 2vw 1vw 0vw",
           boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
         position:"relative",overflow:"hidden",
         background: 'linear-gradient(to bottom, #333, #000)', 
