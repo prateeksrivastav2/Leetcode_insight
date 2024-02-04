@@ -1,7 +1,9 @@
-import React, { useContext ,useState} from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import leetcodedata from '../state/context';
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import leetcodedata from "../state/context";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const EntryPage = () => {
   const context = useContext(leetcodedata);
@@ -9,14 +11,16 @@ const EntryPage = () => {
   const navigate = useNavigate();
 
   const [userId, setUserId] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const handleInputChange = (event) => {
     setUserId(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    setLoader(true);
     event.preventDefault();
-    getuserdata(userId);
+    await getuserdata(userId);
     navigate("/home");
   };
 
@@ -27,7 +31,7 @@ const EntryPage = () => {
           <h2 className="text-center mb-4">Enter Your LeetCode User ID</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="userId">
-              <Form.Label>LeetCode User ID:</Form.Label>
+              <Form.Label>Enter LeetCode User ID:</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter your LeetCode User ID"
@@ -37,9 +41,22 @@ const EntryPage = () => {
               />
             </Form.Group>
             <br />
-            <Button variant="primary" type="submit" block>
+            <Button variant="primary" type="submit" block disabled={loader}>
               Show Data
             </Button>
+            <br />
+            <br />
+
+            <div style={{ display: loader ? "block" : "none" }}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <Box sx={{ display: "flex" ,alignContent:"center",
+              justifyContent:'center'}}>
+                  <CircularProgress />
+                </Box>
+                <br />
+                Loading...
+              </div>
+            </div>
           </Form>
         </Col>
       </Row>
