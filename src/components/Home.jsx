@@ -22,7 +22,7 @@ const Home = () => {
         <br />
         <p>*Username: {userdata.username}</p>
         <br />
-        <p>*Name: {userdata.name}</p>
+        <p>*Name: {userdata.name === undefined ? "none" :userdata.name}</p>
         <br />
         <p>*DOB: {userdata.birthday}</p>
         <br />
