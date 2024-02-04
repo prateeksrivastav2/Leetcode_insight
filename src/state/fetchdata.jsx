@@ -11,12 +11,12 @@ const FetchData = (props) => {
     // const [userdata, setuserdata] = useState([]);
     const [useapionce, setuseapionce] = useState(false);
     let username1 = "Prateeksrivastav703"
-    const getuserdata = async () => {
+    const getuserdata = async (username) => {
         if (!useapionce) {
             setuseapionce(true);
-            let url = `http://localhost:3000/api/${username1}`;
-            let urlsolve=`http://localhost:3000/api/${username1}/solved`;
-            let urlbadge=`http://localhost:3000/api/${username1}/badges`;
+            let url = `http://localhost:3000/api/${username}`;
+            let urlsolve=`http://localhost:3000/api/${username}/solved`;
+            let urlbadge=`http://localhost:3000/api/${username}/badges`;
             try {
                 let responseData = await fetch(url);
                 let responseData2 = await fetch(urlsolve);
