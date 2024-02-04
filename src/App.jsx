@@ -1,23 +1,23 @@
-import { useState } from 'react'
-import './App.css'
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import EntryPage from "./components/EntryPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import Getdata from './state/fetchdata'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <Getdata>
-        <Router>
+      <Router>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<EntryPage />} />
+          <Route exact path="/home" element={<Home />} />
         </Routes>
         </Router>
       </Getdata>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

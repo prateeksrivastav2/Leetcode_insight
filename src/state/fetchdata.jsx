@@ -97,9 +97,9 @@ const FetchData = (props) => {
 
     return (
         <>
-            <Leetcodedata.Provider value={{ getuserdata,userSolved,userdata,Contestdata,userSubmissiondata,useracSubmissiondata,userBadges }}>
-                {props.children}
-            </Leetcodedata.Provider>
+         <Leetcodedata.Provider value={{ getuserdata  }}>
+            {props.children}
+        </Leetcodedata.Provider>
         </>
     );
 };
