@@ -13,6 +13,7 @@ const Contestdetails = () => {
     const [contestName, setContestName] = useState([]);
     const [avgSolved, setavgSolved] = useState([]);
     const [avgSolvedk, setavgSolvedk] = useState(0.0);
+    const [userRating, setuserRating] = useState(0.0);
 
     const setDetails = async () => {
         for (let contest of Contestdata.contestParticipation) {
@@ -29,8 +30,8 @@ const Contestdetails = () => {
                 return prevRatings;
             });
             setavgSolved((prevSolved) => {
-                    return [...prevSolved, contest.problemsSolved];
-             
+                return [...prevSolved, contest.problemsSolved];
+
             });
         }
     };
@@ -40,18 +41,20 @@ const Contestdetails = () => {
     }, [Contestdata]);
 
     useEffect(() => {
-        console.log(contestName);
-        console.log(contestRating);
-        console.log(avgSolved);
-        let sum=0;
-        for(let ind=0;ind<avgSolved.length;ind++){
-            sum+=avgSolved[ind];
+        // console.log(contestName);
+        // console.log(contestRating);
+        // console.log(avgSolved);
+        let sum = 0;
+        for (let ind = 0; ind < avgSolved.length; ind++) {
+            sum += avgSolved[ind];
         }
-        console.log("sum");
-        console.log(sum);
-        const average = avgSolved.length > 0 ? sum / avgSolved.length : 0; // Avoid division by zero
-        setavgSolvedk(average.toFixed(2)); 
-    }, [contestName,contestRating,avgSolved]);
+        const average = avgSolved.length > 0 ? sum / avgSolved.length : 0;
+        setavgSolvedk(parseFloat(average.toFixed(2)));
+
+        const rating = Contestdata.contestRating;
+        const formattedRating = rating !== undefined && rating !== null ? parseFloat(rating.toFixed(2)) : null;
+        setuserRating(formattedRating);
+    }, [contestName, contestRating, avgSolved]);
 
     const data = {
         labels: contestName,
@@ -102,11 +105,11 @@ const Contestdetails = () => {
                 <Line data={data} options={options} />
             </div>
             <div>
-                <p className='btn btn-danger mx-2'>Rating : {Contestdata.contestRating.toFixed(2)}</p>
+                <p className='btn btn-danger mx-2'>Rating : {userRating}</p>
                 <p className='btn btn-primary mx-2'>InTop : {Contestdata.contestTopPercentage}%</p>
                 <p className='btn btn-success mx-2'>Average Solved : {avgSolvedk}</p>
                 <p className='btn btn-info mx-2'>Ranking : {Contestdata.contestGlobalRanking}</p>
-                {Contestdata.contestBadges&&<p className='btn btn-warning mx-2'>Level : {Contestdata.contestBadges.name}</p>}
+                {Contestdata.contestBadges && <p className='btn btn-warning mx-2'>Level : {Contestdata.contestBadges.name}</p>}
             </div>
         </div>
     );

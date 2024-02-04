@@ -9,9 +9,9 @@ import Solved from './solved';
 // import Solved from './solved'
 const Home = () => {
     const context = useContext(leetcodedata);
-    const { getuserdata ,userdata} = context;
+    const { fetchUserData,userdata} = context;
     useEffect(() => {
-        // getuserdata();
+        fetchUserData();
     },[])
     
   return (
