@@ -1,18 +1,20 @@
 import React, { useContext, useEffect } from 'react';
 import leetcodedata from '../state/context';
 import { Container, Row, Col } from 'react-bootstrap';
+import Contestdetails from './Contestdetails';
 
 import Solved from './solved'
 const Home = () => {
     const context = useContext(leetcodedata);
     const { getuserdata ,userdata} = context;
     useEffect(() => {
-        getuserdata();
+        // getuserdata();
     },[])
     
   return (
     <>
     <Solved/>
+    <Contestdetails/>
       <Container fluid className="h-100">
         <Row className="h-100">
           {/* First Div */}

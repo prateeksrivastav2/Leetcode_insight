@@ -1,0 +1,115 @@
+import React, { useEffect, useContext, useState } from 'react';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, LinearScale, CategoryScale, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
+import leetcodedata from '../state/context';
+
+ChartJS.register(LinearScale, CategoryScale, Tooltip, Legend, PointElement, LineElement);
+
+const Contestdetails = () => {
+    const context = useContext(leetcodedata);
+    const { Contestdata } = context;
+
+    const [contestRating, setContestRating] = useState([]);
+    const [contestName, setContestName] = useState([]);
+    const [avgSolved, setavgSolved] = useState([]);
+    const [avgSolvedk, setavgSolvedk] = useState(0.0);
+
+    const setDetails = async () => {
+        for (let contest of Contestdata.contestParticipation) {
+            setContestName((prevNames) => {
+                if (!prevNames.includes(contest.contest.title)) {
+                    return [...prevNames, contest.contest.title];
+                }
+                return prevNames;
+            });
+            setContestRating((prevRatings) => {
+                if (!prevRatings.includes(contest.rating)) {
+                    return [...prevRatings, contest.rating];
+                }
+                return prevRatings;
+            });
+            setavgSolved((prevSolved) => {
+                    return [...prevSolved, contest.problemsSolved];
+             
+            });
+        }
+    };
+
+    useEffect(() => {
+        setDetails();
+    }, [Contestdata]);
+
+    useEffect(() => {
+        console.log(contestName);
+        console.log(contestRating);
+        console.log(avgSolved);
+        let sum=0;
+        for(let ind=0;ind<avgSolved.length;ind++){
+            sum+=avgSolved[ind];
+        }
+        console.log("sum");
+        console.log(sum);
+        const average = avgSolved.length > 0 ? sum / avgSolved.length : 0; // Avoid division by zero
+        setavgSolvedk(average.toFixed(2)); 
+    }, [contestName,contestRating,avgSolved]);
+
+    const data = {
+        labels: contestName,
+        datasets: [
+            {
+                label: 'Contest Ratings',
+                data: contestRating,
+                fill: false,
+                borderColor: '#FF6384',
+                tension: 0.5,
+            },
+        ],
+    };
+
+    const options = {
+        scales: {
+            x: {
+                type: 'category',
+                labels: contestName,
+            },
+            y: {
+                type: 'linear',
+                stepSize: 10, // Specify the desired step size for the y-axis
+                beginAtZero: false, // Set to true if you want the y-axis to start at 0
+            },
+        },
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: {
+            position: 'right',
+        },
+    };
+
+    const cardStyles = {
+        width: '70vw',
+        height: 'fit-content',
+        background: 'linear-gradient(to bottom, #333, #000)',
+        color: '#fff',
+        boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
+        borderRadius: '8px',
+        margin: '16px',
+    };
+
+    return (
+        <div className="card" style={cardStyles}>
+            <h5 className="card-header">Contest Ratings</h5>
+            <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Line data={data} options={options} />
+            </div>
+            <div>
+                <p className='btn btn-danger mx-2'>Rating : {Contestdata.contestRating.toFixed(2)}</p>
+                <p className='btn btn-primary mx-2'>InTop : {Contestdata.contestTopPercentage}%</p>
+                <p className='btn btn-success mx-2'>Average Solved : {avgSolvedk}</p>
+                <p className='btn btn-info mx-2'>Ranking : {Contestdata.contestGlobalRanking}</p>
+                {Contestdata.contestBadges&&<p className='btn btn-warning mx-2'>Level : {Contestdata.contestBadges.name}</p>}
+            </div>
+        </div>
+    );
+};
+
+export default Contestdetails;
