@@ -38,15 +38,15 @@ const FetchData = (props) => {
             } catch (error) {
                 console.log('Error fetching data:', error.message);
             }
-            contestdata();
-            usersubmission();
-            useracsubmission();
+            await contestdata(username);
+            await usersubmission(username);
+            await useracsubmission(username);
         }
     };
-    const contestdata = async () => {
+    const contestdata = async (username) => {
         // if (!useapionce) {
             // setuseapionce(true);
-            let url = `http://localhost:3000/api/${username1}/contest`;
+            let url = `http://localhost:3000/api/${username}/contest`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -60,9 +60,9 @@ const FetchData = (props) => {
             }
         // }
     };
-    const usersubmission = async () => {
+    const usersubmission = async (username) => {
         
-            let url = `http://localhost:3000/api/${username1}/submission?limit=10`;
+            let url = `http://localhost:3000/api/${username}/submission?limit=10`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -76,9 +76,9 @@ const FetchData = (props) => {
             }
         // }
     };
-    const useracsubmission = async () => {
+    const useracsubmission = async (username) => {
        
-            let url = `http://localhost:3000/api/${username1}/acSubmission?limit=10`;
+            let url = `http://localhost:3000/api/${username}/acSubmission?limit=10`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();

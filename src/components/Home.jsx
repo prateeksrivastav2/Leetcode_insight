@@ -3,17 +3,21 @@
 import React, { useContext, useEffect } from 'react';
 import leetcodedata from '../state/context';
 import '../styles/Home.css';
+import Contestdetails from './Contestdetails';
+import Solved from './solved';
 
-import Solved from './solved'
+// import Solved from './solved'
 const Home = () => {
     const context = useContext(leetcodedata);
     const { getuserdata ,userdata} = context;
     useEffect(() => {
-        getuserdata();
+        // getuserdata();
     },[])
     
   return (
     <>
+    <Solved/>
+    <Contestdetails/>
     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between',boxSizing:'border-box',width:"100vw" }}>
       {/* First Div (20vw) */}
       <div className='firstdiv box card' style={{ width: '20vw', backgroundColor: 'lightdark',margin:"3vw"}}>
@@ -38,7 +42,7 @@ const Home = () => {
         second div
       </div>
     </div>
-    <Solved/>
+    
     </>
   );
 };
