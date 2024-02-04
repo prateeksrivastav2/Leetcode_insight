@@ -1,0 +1,12 @@
+.firstdiv{
+  border-radius: 4%;
+  border: 2px black solid;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 1%;
+}
+.seconddiv{
+  padding: 1%;
+  border-radius: 4%;
+  border: 2px black solid;
+}
