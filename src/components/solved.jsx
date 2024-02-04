@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import leetcodedata from '../state/context';
+import { Center } from '@chakra-ui/layout';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -19,8 +20,8 @@ const Solved = () => {
     datasets: [
       {
         data: [userSolved.easySolved, userSolved.mediumSolved, userSolved.hardSolved],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        backgroundColor: ['blue', 'green', 'red'],
+        hoverBackgroundColor: ['blue', 'green', 'red'],
       },
     ],
   };
@@ -31,29 +32,34 @@ const Solved = () => {
     legend: {
       position: 'left',
     },
-    cutout: '45%',
-    radius: '100%',
+    cutout: '50%',
+    radius: '60%',
   };
 
   const cardStyles = {
-    width: '40vw',
-    maxHeight: '80vw',
-    maxWidth: '45vw',
+    width: '33vw',
+    height: '60vh',
     background: 'linear-gradient(to bottom, #333, #000)',
     color: '#fff',
     boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
     borderRadius: '8px',
-    margin: '16px',
+    margin: '3vw 3vw 0vw 0vw',
     padding:0,
   };
 
+  const mainstyles = {
+    alignItems:"center"
+  };
+
   return (
+    <div style={mainstyles}>
     <div className="card" style={cardStyles}>
       <h5 className="card-header">Solved Questions</h5>
       <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Pie data={data} options={options} />
       </div>
             <p><strong >Total Solved: </strong>{userSolved.solvedProblem}</p>
+    </div>
     </div>
   );
 };
