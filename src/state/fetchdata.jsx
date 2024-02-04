@@ -26,6 +26,8 @@ const FetchData = (props) => {
                 let parsedData3 = await responseData3.json();
 
                 console.log('Parsed Data: ', parsedData);
+                console.log('Parsed Data2: ', parsedData2);
+                console.log('Parsed Data3: ', parsedData3);
                 if (!responseData.ok) throw new Error(parsedData.message);
                 if (!responseData2.ok) throw new Error(parsedData.message);
                 if (!responseData3.ok) throw new Error(parsedData.message);
