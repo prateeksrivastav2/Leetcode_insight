@@ -2,10 +2,10 @@ import React,{useState} from 'react'
 import Leetcodedata from "./context";
 const fetchdata = (props) => {
     let data = [];
-    let username1 = "Prateeksrivastav703"
+    // let username1 = "Prateeksrivastav703"
     const [userdata, setuserdata] = useState(data);
     const getuserdata = async (username) => {
-        let url = `https://alfa-leetcode-api.vercel.app/${username1}`
+        let url = `http://localhost:3000/api/${username}`
         try {
             let responseData = await fetch(url);
             let parsedData = await responseData.json();
@@ -26,7 +26,7 @@ const fetchdata = (props) => {
 
     return (
         <>
-         <Leetcodedata.Provider value={{ getuserdata  }}>
+         <Leetcodedata.Provider value={{ getuserdata,userdata  }}>
             {props.children}
         </Leetcodedata.Provider>
         </>

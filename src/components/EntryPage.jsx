@@ -1,11 +1,14 @@
-// EntryPage.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Assuming you use React Router
+import React, { useContext ,useState} from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import leetcodedata from '../state/context';
 
 const EntryPage = () => {
-  const [userId, setUserId] = useState('');
-  const history = useNavigate();
+  const context = useContext(leetcodedata);
+  const { getuserdata } = context;
+  const navigate = useNavigate();
+
+  const [userId, setUserId] = useState("");
 
   const handleInputChange = (event) => {
     setUserId(event.target.value);
@@ -13,12 +16,12 @@ const EntryPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Redirect to the user data page with the entered user ID
-    history.push(`/userdata/${userId}`);
+    getuserdata(userId);
+    navigate("/home");
   };
 
   return (
-    <Container className="mt-5" style={{width:"100vw"}}>
+    <Container className="mt-5" style={{ width: "100vw" }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
           <h2 className="text-center mb-4">Enter Your LeetCode User ID</h2>

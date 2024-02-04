@@ -2,7 +2,7 @@ import React,{useContext,useEffect} from 'react'
 import leetcodedata from '../state/context';
 const Home = () => {
     const context = useContext(leetcodedata);
-    const { getuserdata } = context;
+    const { getuserdata ,userdata} = context;
     useEffect(() => {
         getuserdata();
     })
@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
     <div className="details">
-        photo and details
+      username:{userdata.username}
     </div>
     <div className="submissions">
         submissions
