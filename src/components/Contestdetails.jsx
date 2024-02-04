@@ -95,7 +95,7 @@ const Contestdetails = () => {
         color: '#fff',
         boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
         borderRadius: '8px',
-        margin: '16px',
+        margin: '2vw',
     };
 
     return (
