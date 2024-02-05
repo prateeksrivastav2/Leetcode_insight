@@ -3,6 +3,9 @@ import leetcodedata from "../state/context";
 import "../styles/Home.css";
 import Contestdetails from "./Contestdetails";
 import Solved from "./solved";
+import Submission from "./Submission";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithubAlt,faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 // import Solved from './solved'
 const Home = () => {
@@ -52,18 +55,21 @@ const Home = () => {
                                 objectFit: "cover"
                             }}
                         />
+                        {/* <br /> */}
+                        {/* <br /> */}
+                        <h4 className="user" style={{marginLeft:"6%"}}>{userdata.username}</h4>
                         <br />
-                        <h2>User Details</h2>
-                        <br />
-                        <p>Username: {userdata.username}</p>
-                        <br />
-                        <p>Name: {userdata.name === undefined ? "none" : userdata.name}</p>
-                        <br />
+                        {/* <p>Username: {userdata.username}</p> */}
+                        {/* <br /> */}
                         <p>DOB: {userdata.birthday}</p>
                         <br />
-                        <p>About: {userdata.about}</p>
+                        <p>{userdata.about}</p>
                         <br />
                         <p>Rating: {userRating}</p>
+                        <br />
+                        <FontAwesomeIcon className="" size="2x" style={{cursor:'pointer'}} icon={faGithubAlt} />
+                        <FontAwesomeIcon className="" size="2x" style={{cursor:'pointer'}} icon={faLinkedinIn} />
+                        {/* <FontAwesomeIcon icon={faLinkedinIn} /> */}
                     </ul>
                 </div>
                 <div style={{ alignItems: "center" }}>
@@ -81,6 +87,10 @@ const Home = () => {
             <div className="d-flex"
                 style={{ alignItems: "center", justifyContent: "center" }}>
                 <Contestdetails />
+            </div>
+            <div className="d-flex"
+                style={{ alignItems: "center", justifyContent: "center" }}>
+                <Submission/>
             </div>
         </>
     );
