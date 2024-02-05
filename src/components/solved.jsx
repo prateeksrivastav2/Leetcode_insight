@@ -43,7 +43,7 @@ const Solved = () => {
     color: '#fff',
     boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
     borderRadius: '8px',
-    margin: '3vw 3vw 0vw 0vw',
+    margin: '3vw 2vw 0vw 0vw',
     padding:0,
   };
 
@@ -54,7 +54,8 @@ const Solved = () => {
   return (
     <div style={mainstyles}>
     <div className="card" style={cardStyles}>
-      <h5 className="card-header">Solved Questions</h5>
+      <br />
+      <h3 className="card-header">Solved Questions</h3>
       <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Pie data={data} options={options} />
       </div>
