@@ -32,7 +32,7 @@ const Submission = () => {
             setQuestion([]);
             setQuestiondata(userSubmissiondata);
         }
-        console.log(Questiondata)
+        // console.log(Questiondata)
         storeQuestion();
     };
     const handelquestion=(name)=>{

@@ -10,13 +10,15 @@ import { faGithubAlt,faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 // import Solved from './solved'
 const Home = () => {
     const context = useContext(leetcodedata);
-    const { fetchUserData, Contestdata, userdata } = context;
+    const { fetchUserData, Contestdata, userdata,userBadges } = context;
     const [userRating, setuserRating] = useState(0.0);
     useEffect(() => {
         fetchUserData();
         const rating = Contestdata.contestRating;
         const formattedRating = rating !== undefined && rating !== null ? parseFloat(rating.toFixed(0)) : null;
         setuserRating(formattedRating);
+        console.log("userBadges");
+        console.log(userBadges);
     }, []);
 
     return (
