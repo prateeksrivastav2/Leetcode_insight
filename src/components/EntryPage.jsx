@@ -12,13 +12,7 @@ const EntryPage = () => {
 
   const [userId, setUserId] = useState("");
   const [loader, setLoader] = useState(false);
-
-  // Load user ID from localStorage on component mount
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
-    if (storedUserId) {
-      setUserId(storedUserId);
-    }
   }, []);
 
   const handleInputChange = (event) => {

@@ -9,6 +9,7 @@ const FetchData = (props) => {
     const [userSubmissiondata, setuserSubmissiondata] = useState([]);
     const [useracSubmissiondata, setuseracSubmissiondata] = useState([]);
     const [useapionce, setuseapionce] = useState(false);
+    const [potd,setPotd] = useState();
 
     const fetchUserData = async () => {
         let storedUsername = localStorage.getItem('userId');
@@ -19,14 +20,17 @@ const FetchData = (props) => {
                 let url = `http://localhost:3000/api/${storedUsername}`;
                 let urlsolve = `http://localhost:3000/api/${storedUsername}/solved`;
                 let urlbadge = `http://localhost:3000/api/${storedUsername}/badges`;
+                let POTD = `http://localhost:3000/api/daily`;
 
                 let responseData = await fetch(url);
                 let responseData2 = await fetch(urlsolve);
                 let responseData3 = await fetch(urlbadge);
+                let responseData4 = await fetch(POTD);
 
                 let parsedData = await responseData.json();
                 let parsedData2 = await responseData2.json();
                 let parsedData3 = await responseData3.json();
+                let parsedData4 = await responseData4.json();
 
                 if (!responseData.ok) throw new Error(parsedData.message);
                 if (!responseData2.ok) throw new Error(parsedData2.message);
@@ -35,6 +39,7 @@ const FetchData = (props) => {
                 setuserdata(parsedData);
                 setSolved(parsedData2);
                 setuserBadges(parsedData3);
+                setPotd(parsedData4)
             } catch (error) {
                 window.location.replace('/');
                 console.log('Error fetching data:', error.message);
@@ -111,7 +116,7 @@ const FetchData = (props) => {
 
     return (
         <>
-            <Leetcodedata.Provider value={{ fetchUserData, userSolved, userdata, Contestdata, userSubmissiondata, useracSubmissiondata, userBadges }}>
+            <Leetcodedata.Provider value={{ fetchUserData, userSolved, userdata, Contestdata, userSubmissiondata, useracSubmissiondata, userBadges ,potd }}>
                 {props.children}
             </Leetcodedata.Provider>
         </>
