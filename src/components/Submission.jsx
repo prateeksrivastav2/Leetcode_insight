@@ -88,7 +88,7 @@ const Submission = () => {
                 </div>
                 <div className="card-body">
                     <div style={containerStyles}>
-                        <p>Question</p>
+                        <p>Questions</p>
                         <p>Status</p>
                     </div>
                     <div>
