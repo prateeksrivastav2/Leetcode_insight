@@ -14,6 +14,7 @@ const Contestdetails = () => {
     const [avgSolved, setavgSolved] = useState([]);
     const [avgSolvedk, setavgSolvedk] = useState(0.0);
     const [userRating, setuserRating] = useState(0.0);
+    const [p,setP]=useState([])
 
     const setDetails = async () => {
         for (let contest of Contestdata.contestParticipation) {
@@ -106,6 +107,7 @@ const Contestdetails = () => {
             </div>
             <div>
                 <p className='btn btn-danger mx-2'>Rating : {userRating}</p>
+                <p className='btn btn-info mx-2'>Contests : {Contestdata.contestAttend}</p>
                 <p className='btn btn-primary mx-2'>InTop : {Contestdata.contestTopPercentage}%</p>
                 <p className='btn btn-success mx-2'>Average Solved : {avgSolvedk}</p>
                 <p className='btn btn-info mx-2'>Ranking : {Contestdata.contestGlobalRanking}</p>

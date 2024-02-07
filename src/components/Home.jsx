@@ -6,14 +6,19 @@ import Solved from "./solved";
 import Submission from "./Submission";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubAlt, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { Navigate, useNavigate } from "react-router-dom";
 
 // import Solved from './solved'
 const Home = () => {
   const context = useContext(leetcodedata);
-  const { fetchUserData, Contestdata, userdata, userBadges ,potd } = context;
+  const { fetchUserData, Contestdata, userdata, userBadges, potd } = context;
+  const navigate=useNavigate();
   const [userRating, setuserRating] = useState(0.0);
   useEffect(() => {
     fetchUserData();
+    if(userdata === ''){
+        navigate("/")
+    }
     const rating = Contestdata.contestRating;
     const formattedRating =
       rating !== undefined && rating !== null
@@ -50,32 +55,28 @@ const Home = () => {
   );
 
   const POTDComponent = ({ data }) => {
-    const {
-      questionLink,
-      date,
-      questionId,
-      questionFrontendId,
-      questionTitle,
-      titleSlug,
-      difficulty,
-      isPaidOnly,
-      question,
-      exampleTestcases,
-      topicTags,
-      hints,
-      solution,
-      companyTagStats,
-      likes,
-      dislikes,
-      similarQuestions,
-    } = data;
-  
+    const { questionLink, questionTitle, difficulty } = data;
+
+    // Define a style object based on the difficulty
+    const difficultyStyle = {
+      color:
+        difficulty === "Easy"
+          ? "green"
+          : difficulty === "Medium"
+          ? "yellow"
+          : "red",
+    };
+
     return (
       <div>
-        <div>Haven't solved the POTD yet? Click below to check it out</div>        
+        <div>Haven't solved the POTD yet? Click below to check it out</div>
+        <p>
+          <a href={questionLink} target="_blank" rel="noopener noreferrer">
+            <h2 style={difficultyStyle}>{questionTitle}</h2>
+          </a>
+        </p>
+
         <p>Difficulty: {difficulty}</p>
-        <p><a href={questionLink} target="_blank" rel="noopener noreferrer"><h2>{questionTitle}</h2></a></p>
-  
       </div>
     );
   };
@@ -107,28 +108,32 @@ const Home = () => {
         >
           <ul className="list-group list-group-flush">
             <img
-              src={userdata.avatar} // Replace with the actual path to your image
+              src={userdata.avatar!=="https://assets.leetcode.com/users/avatars/avatar_1704517319.png" ? userdata.avatar : "https://leetcode.com/static/images/LeetCode_logo_rvs.png"}
               alt="User Photo"
               style={{
-                position: "absolute", // Position the image absolutely within the div
-                top: "-0.2vh", // Position at the top
-                left: "-0.2vw", // Position at the left
-                width: "6vw", // Adjust the width as needed
-                height: "13vh", // Adjust the height as needed
-                borderRadius: "0% 0% 20% 0%", // Make it round if needed
+                position: "absolute",
+                top: "-0.2vh", 
+                left: "-0.2vw",
+                width: "6vw",
+                height: "13vh",
+                borderRadius: "0% 0% 20% 0%",
                 border: "0.2vw white solid",
                 objectFit: "cover",
               }}
             />
-            <h4 className="user" style={{ marginLeft: "6%" }}>
+            <a
+              className="user"
+              style={{ marginLeft: "0%",color:'white' }}
+              href={`https://leetcode.com/${userdata.username}`}
+              target="_blank"
+            >
               {userdata.username}
-            </h4>
+            </a>
             <br />
             <p>DOB: {userdata.birthday}</p>
             <br />
             <p>{userdata.about}</p>
-            <br />
-            <p>Rating: {userRating}</p>
+            <p>RATING: {userRating}</p>
             <br />
 
             <POTDComponent data={potd} />
@@ -136,25 +141,49 @@ const Home = () => {
             {/* github and linkedin icon */}
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div>
-                <FontAwesomeIcon
-                  className=""
-                  size="2x"
-                  style={{ cursor: "pointer", marginRight: "1vw" }}
-                  icon={faGithubAlt}
-                />
-                <FontAwesomeIcon
-                  className=""
-                  size="2x"
-                  style={{ cursor: "pointer" }}
-                  icon={faLinkedinIn}
-                />
+                {userdata.linkedIN && (
+                  <a
+                    href={userdata.linkedIN}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      className=""
+                      size="2x"
+                      style={{ cursor: "pointer", marginRight: "1vw" }}
+                      icon={faLinkedinIn}
+                    />
+                  </a>
+                )}
+                {userdata.gitHub && (
+                  <a
+                    href={userdata.gitHub}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      className=""
+                      size="2x"
+                      style={{ cursor: "pointer" }}
+                      icon={faGithubAlt}
+                    />
+                  </a>
+                )}
               </div>
             </div>
           </ul>
         </div>
+
+
+        {/* middle div */}
+
         <div style={{ alignItems: "center" }}>
           <Solved />
         </div>
+
+
+        {/* third div in first row */}
+
         <div
           className="box card"
           style={{
@@ -175,14 +204,14 @@ const Home = () => {
             <h5>Count: {userBadges.badgesCount}</h5>
 
             <h5>Badges:</h5>
-            <div>
+            {/* <div>
               {userBadges &&
                 userBadges.badges.map((badge) => (
                   <Badge key={badge.id} badge={badge} />
                 ))}
-            </div>
+            </div> */}
 
-            <h5>Upcoming Badges:</h5>
+            {/* <h5>Upcoming Badges:</h5>
             <div>
               {userBadges.upcomingBadges.map((upcomingBadge) => (
                 <UpcomingBadge
@@ -190,7 +219,7 @@ const Home = () => {
                   upcomingBadge={upcomingBadge}
                 />
               ))}
-            </div>
+            </div> */}
 
             {/* for the active badges */}
 

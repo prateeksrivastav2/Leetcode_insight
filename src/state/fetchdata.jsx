@@ -10,6 +10,7 @@ const FetchData = (props) => {
     const [useracSubmissiondata, setuseracSubmissiondata] = useState([]);
     const [useapionce, setuseapionce] = useState(false);
     const [potd,setPotd] = useState();
+    const [limit,setLimit] = useState(10);
 
     const fetchUserData = async () => {
         let storedUsername = localStorage.getItem('userId');
@@ -77,7 +78,8 @@ const FetchData = (props) => {
     const usersubmission = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:3000/api/${storedUsername}/submission?limit=10`;
+            console.log('abhi limit hai ',limit);
+            let url = `http://localhost:3000/api/${storedUsername}/submission?limit=${limit}`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -97,7 +99,8 @@ const FetchData = (props) => {
     const useracsubmission = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:3000/api/${storedUsername}/acSubmission?limit=10`;
+            console.log('abhi limit hai ',limit);
+            let url = `http://localhost:3000/api/${storedUsername}/acSubmission?limit=${limit}`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -116,7 +119,7 @@ const FetchData = (props) => {
 
     return (
         <>
-            <Leetcodedata.Provider value={{ fetchUserData, userSolved, userdata, Contestdata, userSubmissiondata, useracSubmissiondata, userBadges ,potd }}>
+            <Leetcodedata.Provider value={{ fetchUserData, userSolved, userdata, Contestdata, userSubmissiondata, useracSubmissiondata, userBadges ,potd,useracsubmission,usersubmission,setLimit }}>
                 {props.children}
             </Leetcodedata.Provider>
         </>
