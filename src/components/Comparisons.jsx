@@ -7,38 +7,43 @@ import Box from "@mui/material/Box";
 
 const Comparisons = () => {
   const context = useContext(leetcodedata);
-  const { fetchUserData } = context;
+  const { fetchUserData, fetchUserData2 } = context;
   const navigate = useNavigate();
 
-  const [userId1, setUserId1] = useState("");
+  const [userId, setUserId] = useState("");
   const [userId2, setUserId2] = useState("");
   const [loader, setLoader] = useState(false);
 
   // Load user ID from localStorage on component mount
   useEffect(() => {
-    const storedUserId1 = localStorage.getItem("userId1");
-    const storedUserId2 = localStorage.getItem("userId1");
-    if (storedUserId1) {
-      setUserId1(storedUserId1);
+    const storedUserId = localStorage.getItem("userId");
+    const storedUserId2 = localStorage.getItem("userId2");
+    if (storedUserId) {
+      setUserId(storedUserId);
     }
     if (storedUserId2) {
-      setUserId1(storedUserId2);
+      setUserId2(storedUserId2);
     }
   }, []);
 
-  const handleInputChange = (event) => {
-    setUserId1(event.target.value);
-    setUserId2(event.target.value);
+  const handleInputChange = (event, field) => {
+    const value = event.target.value;
+    if (field === "userId") {
+      setUserId(value);
+    } else if (field === "userId2") {
+      setUserId2(value);
+    }
   };
 
   const handleSubmit = async (event) => {
     setLoader(true);
     event.preventDefault();
-    localStorage.setItem("userId1", userId1);
-    await fetchUserData();
+    localStorage.setItem("userId", userId);
     localStorage.setItem("userId2", userId2);
+     fetchUserData2();
+    await fetchUserData();
     // Save user ID to localStorage
-    navigate("/home");
+    navigate("/Scoregenerator");
   };
 
   return (
@@ -48,12 +53,20 @@ const Comparisons = () => {
           <h2 className="text-center mb-4">Enter Your LeetCode User ID</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="userId">
-              <Form.Label>Enter LeetCode User ID:</Form.Label>
+              <Form.Label>Enter LeetCode User1 ID:</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter your LeetCode User ID"
                 value={userId}
-                onChange={handleInputChange}
+                onChange={(e) => handleInputChange(e, "userId")}
+                required
+              />
+              <Form.Label>Enter LeetCode User2 ID:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your LeetCode User ID"
+                value={userId2}
+                onChange={(e) => handleInputChange(e, "userId2")}
                 required
               />
             </Form.Group>
