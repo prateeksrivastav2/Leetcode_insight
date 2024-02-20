@@ -5,9 +5,10 @@ import { faCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Submission = () => {
   const context = useContext(leetcodedata);
-  const { useracSubmissiondata, userSubmissiondata, limit, setLimit, usersubmission, useracsubmission } = context;
+  const { setuseracSubmissiondata,setuserSubmissiondata,useracSubmissiondata, userSubmissiondata, limit, setLimit, usersubmission, useracsubmission } = context;
   const [Question, setQuestion] = useState([]);
   const [Questiondata, setQuestiondata] = useState(userSubmissiondata);
+    const [newLimit,setNewLimit]=useState(limit);
 
   const storeQuestion = () => {
     if (Array.isArray(Questiondata.submission)) {
@@ -29,6 +30,60 @@ const Submission = () => {
     }
     storeQuestion();
   };
+    const usersubmission2 = async () => {
+        let storedUsername = localStorage.getItem('userId');
+        if (storedUsername) {
+            console.log('abhi limit hai ',limit);
+            let url = `http://localhost:3000/api/${storedUsername}/submission?limit=${limit}`;
+            try {
+                let responseData = await fetch(url);
+                let parsedData = await responseData.json();
+
+                if (!responseData.ok) throw new Error(parsedData.message);
+
+                setuserSubmissiondata(parsedData);
+            } catch (error) {
+                window.location.replace('/');
+                console.log('Error fetching data:', error.message);
+            }
+        } else {
+            window.location.replace('/');
+        }
+    };
+
+    const useracsubmission2 = async () => {
+        let storedUsername = localStorage.getItem('userId');
+        if (storedUsername) {
+            console.log('abhi limit hai ',limit);
+            let url = `http://localhost:3000/api/${storedUsername}/acSubmission?limit=${limit}`;
+            try {
+                let responseData = await fetch(url);
+                let parsedData = await responseData.json();
+
+                if (!responseData.ok) throw new Error(parsedData.message);
+
+                setuseracSubmissiondata(parsedData);
+            } catch (error) {
+                window.location.replace('/');
+                console.log('Error fetching data:', error.message);
+            }
+        } else {
+            window.location.replace('/');
+        }
+    };
+    const handleSubmissionForLimitChange =async () => {
+        console.log('limit change mei toh agay',newLimit)
+        let x=parseInt(newLimit,10)
+        setLimit(x);
+        // setQuestion([]);
+        // setQuestiondata(userSubmissiondata)
+        await useracsubmission2();
+        await usersubmission2();
+        setQuestion([]);
+        setQuestiondata(userSubmissiondata);
+        console.log(Questiondata)
+        storeQuestion();
+    };
 
   const handelquestion = (name) => {
     const naam = name.toLowerCase().replace(/\s+/g, '-');
@@ -85,67 +140,55 @@ const Submission = () => {
     padding: '0.5rem 0',
   };
 
-  return (
-    <>
-      <div className="card" style={cardStyles}>
-        <div className="card-header">
-          <h5>Previous Submission</h5>
-        </div>
-        <div className="card-body">
-          <div style={containerStyles}>
-            <p>Question</p>
-            <p>Status</p>
-          </div>
-          <div>
-            {Question.map((item, index) => (
-              <div
-                key={index}
-                style={{ ...itemStyles, ...(index % 2 === 0 ? itemHoverStyles : null) }}
-              >
-                <a onClick={() => { handelquestion(item.title) }}>{item.title}</a>
-                <div>
-                  {item.status === "Accepted" && <FontAwesomeIcon className='text-success' style={{ fontSize: '1.3rem' }} icon={faCheck} />}
-                  {item.status !== "Accepted" && <FontAwesomeIcon className='text-danger' style={{ fontSize: '1.3rem' }} icon={faCircleXmark} />}
+    return (
+        <>
+            <div className="card" style={cardStyles}>
+                <div className="card-header">
+                    <h5>Previous Submission</h5>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="card-footer text-body-secondary" style={footerStyles}>
-          {Questiondata === userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>Ac Submission</a>}
-          {Questiondata !== userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>All Submissions</a>}
-          <label
-            htmlFor="limit"
-            style={{ color: 'white', marginLeft: "1vw" }}
-          >Limit on submission:</label>
-          <input className='inp'
-            type="number"
-            id="limit"
-            value={limit}
-            style={{
-              width: "10vw",
-              padding: "8px",
-              fontSize: "1rem",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              outline: "none",
-              transition: "border-color 0.3s ease",
-              borderColor: "#3498db",
-              boxShadow: "0 0 5px rgba(52, 152, 219, 0.5)",
-            }}
-            onChange={async (e) => {
-              e.preventDefault();
-              { setLimit(parseInt(e.target.value)) }
-              await usersubmission();
-              await useracsubmission();
-            }}
-            min="1"
-            placeholder='10'
-          />
-        </div>
-      </div>
-    </>
-  );
+                <div className="card-body">
+                    <div style={containerStyles}>
+                        <p>Question</p>
+                        <p>Status</p>
+                    </div>
+                    <div>
+                        {Question.map((item, index) => (
+                            <div
+                                key={index}
+                                style={{ ...itemStyles, ...(index % 2 === 0 ? itemHoverStyles : null) }}
+                            >
+                                <a onClick={() => { handelquestion(item.title) }}>{item.title}</a>
+                                <div>
+                                    {item.status === "Accepted" && <FontAwesomeIcon className='text-success' style={{ fontSize: '1.3rem' }} icon={faCheck} />}
+                                    {item.status !== "Accepted" && <FontAwesomeIcon className='text-danger' style={{ fontSize: '1.3rem' }} icon={faCircleXmark} />}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="card-footer text-body-secondary">
+                    {Questiondata === userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>Ac Submission</a>}
+                    {Questiondata !== userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>All Submissions</a>}
+                    <label 
+                        htmlFor="limit"
+                        style={{ color: 'white', marginLeft: "1vw" }}
+                    >
+                        Limit on submission:
+                    </label>
+                    <input
+                        type="number"
+                        id="limit"
+                        value={newLimit}
+                        min="1"                        
+                        onChange={(e) => setNewLimit(parseInt(e.target.value, 10))}
+                        placeholder='10(default)'
+                    />
+                    {/* Add a submit button */}
+                    <button onClick={handleSubmissionForLimitChange} className='btn btn-primary' style={{ marginLeft: "1vw" }}>Submit Limit</button>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default Submission;

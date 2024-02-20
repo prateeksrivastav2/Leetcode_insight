@@ -6,6 +6,7 @@ import Solved from "./solved";
 import Submission from "./Submission";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubAlt, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Home = () => {
     const context = useContext(leetcodedata);
@@ -75,7 +76,7 @@ const Home = () => {
 
         return (
             <div>
-            <div style={{ fontSize: '0.7rem' }}>Haven't solved the POTD yet? Click below to check it out</div>
+            <div style={{ fontSize: '1.5rem' }}>Haven't solved the POTD yet? Click below to check it out</div>
             <div style={{ fontSize: '1rem' }}>Difficulty: {difficulty}</div>
             <div style={{ margin: '1vw' }}><a href={questionLink} target="_blank" rel="noopener noreferrer"><h5>{questionTitle}</h5></a></div>
         </div>
@@ -110,7 +111,8 @@ const Home = () => {
                 >
                     <ul className="list-group list-group-flush">
                         <img
-                            src={userdata.avatar} 
+                            src={userdata.avatar!=="https://assets.leetcode.com/users/avatars/avatar_1704517319.png" ?
+                         userdata.avatar : "https://leetcode.com/static/images/LeetCode_logo_rvs.png"} 
                             alt="User Photo"
                             style={{
                                 position: "absolute", 

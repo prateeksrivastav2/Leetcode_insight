@@ -40,7 +40,7 @@ const Comparisons = () => {
     event.preventDefault();
     localStorage.setItem("userId", userId);
     localStorage.setItem("userId2", userId2);
-     fetchUserData2();
+    fetchUserData2();
     await fetchUserData();
     // Save user ID to localStorage
     navigate("/Scoregenerator");
