@@ -5,9 +5,10 @@ import { faCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Submission = () => {
     const context = useContext(leetcodedata);
-    const { useracSubmissiondata, userSubmissiondata, limit, setLimit,usersubmission,useracsubmission } = context;
+    const { setuseracSubmissiondata,setuserSubmissiondata,useracSubmissiondata, userSubmissiondata, limit, setLimit,usersubmission,useracsubmission } = context;
     const [Question, setQuestion] = useState([]);
     const [Questiondata, setQuestiondata] = useState(userSubmissiondata);
+    const [newLimit,setNewLimit]=useState(limit);
 
     const storeQuestion = () => {
         if (Array.isArray(Questiondata.submission)) {
@@ -29,6 +30,60 @@ const Submission = () => {
             setQuestion([]);
             setQuestiondata(userSubmissiondata);
         }
+        console.log(Questiondata)
+        storeQuestion();
+    };
+    const usersubmission2 = async () => {
+        let storedUsername = localStorage.getItem('userId');
+        if (storedUsername) {
+            console.log('abhi limit hai ',limit);
+            let url = `http://localhost:3000/api/${storedUsername}/submission?limit=${limit}`;
+            try {
+                let responseData = await fetch(url);
+                let parsedData = await responseData.json();
+
+                if (!responseData.ok) throw new Error(parsedData.message);
+
+                setuserSubmissiondata(parsedData);
+            } catch (error) {
+                window.location.replace('/');
+                console.log('Error fetching data:', error.message);
+            }
+        } else {
+            window.location.replace('/');
+        }
+    };
+
+    const useracsubmission2 = async () => {
+        let storedUsername = localStorage.getItem('userId');
+        if (storedUsername) {
+            console.log('abhi limit hai ',limit);
+            let url = `http://localhost:3000/api/${storedUsername}/acSubmission?limit=${limit}`;
+            try {
+                let responseData = await fetch(url);
+                let parsedData = await responseData.json();
+
+                if (!responseData.ok) throw new Error(parsedData.message);
+
+                setuseracSubmissiondata(parsedData);
+            } catch (error) {
+                window.location.replace('/');
+                console.log('Error fetching data:', error.message);
+            }
+        } else {
+            window.location.replace('/');
+        }
+    };
+    const handleSubmissionForLimitChange =async () => {
+        console.log('limit change mei toh agay',newLimit)
+        let x=parseInt(newLimit,10)
+        setLimit(x);
+        // setQuestion([]);
+        // setQuestiondata(userSubmissiondata)
+        await useracsubmission2();
+        await usersubmission2();
+        setQuestion([]);
+        setQuestiondata(userSubmissiondata);
         console.log(Questiondata)
         storeQuestion();
     };
@@ -109,23 +164,21 @@ const Submission = () => {
                     {Questiondata === userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>Ac Submission</a>}
                     {Questiondata !== userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>All Submissions</a>}
                     <label 
-                    htmlFor="limit"
-                    style={{color:'white',marginLeft:"1vw"}}                    
-                    >Limit on submission:</label>
+                        htmlFor="limit"
+                        style={{ color: 'white', marginLeft: "1vw" }}
+                    >
+                        Limit on submission:
+                    </label>
                     <input
                         type="number"
                         id="limit"
-                        value={limit}
-                        onChange={async (e) =>{ 
-                            e.preventDefault();
-                            console.log('hogaya click')
-                            {setLimit(parseInt(e.target.value))}
-                            await usersubmission();
-                            await useracsubmission();
-                        }}
-                        min="1"
+                        value={newLimit}
+                        min="1"                        
+                        onChange={(e) => setNewLimit(parseInt(e.target.value, 10))}
                         placeholder='10(default)'
                     />
+                    {/* Add a submit button */}
+                    <button onClick={handleSubmissionForLimitChange} className='btn btn-primary' style={{ marginLeft: "1vw" }}>Submit Limit</button>
                 </div>
             </div>
         </>
