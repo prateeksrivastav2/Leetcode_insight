@@ -17,30 +17,32 @@ const FetchData = (props) => {
     const [Contestdata2, setContestdata2] = useState([]);
     // const [useapionce2, setuseapionce2] = useState(false);
     const fetchUserData = async () => {
-        let storedUsername = localStorage.getItem('userId');
+        const storedUsername = String((localStorage.getItem('userId')).trim());
         if (storedUsername) {
             console.log("storedUsername");
             console.log(storedUsername);
             try {
-                let url = `http://localhost:3000/api/${storedUsername}`;
-                let urlsolve = `http://localhost:3000/api/${storedUsername}/solved`;
-                let urlbadge = `http://localhost:3000/api/${storedUsername}/badges`;
-                let POTD = `http://localhost:3000/api/daily`;
-
+                let url =`http://localhost:6001/prateeksrivastav703`; // Dynamically generate URL based on storedUsername
+                let urlsolve = `http://localhost:6001/prateeksrivastav703/solved`;
+                let urlbadge = `http://localhost:6001/prateeksrivastav703/badges`;
+                let POTD = `http://localhost:6001/daily`;
+    
                 let responseData = await fetch(url);
                 let responseData2 = await fetch(urlsolve);
                 let responseData3 = await fetch(urlbadge);
                 let responseData4 = await fetch(POTD);
 
+    
                 let parsedData = await responseData.json();
                 let parsedData2 = await responseData2.json();
                 let parsedData3 = await responseData3.json();
                 let parsedData4 = await responseData4.json();
-
+    
                 if (!responseData.ok) throw new Error(parsedData.message);
                 if (!responseData2.ok) throw new Error(parsedData2.message);
                 if (!responseData3.ok) throw new Error(parsedData3.message);
-
+                console.log(parsedData);
+    
                 setuserdata(parsedData);
                 setSolved(parsedData2);
                 setuserBadges(parsedData3);
@@ -49,7 +51,7 @@ const FetchData = (props) => {
                 window.location.replace('/');
                 console.log('Error fetching data:', error.message);
             }
-
+    
             await contestdata();
             await usersubmission();
             await useracsubmission();
@@ -58,11 +60,11 @@ const FetchData = (props) => {
             window.location.replace('/');
         }
     };
-
+    
     const contestdata = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:3000/api/${storedUsername}/contest`;
+            let url = `http://localhost:6001/prateeksrivastav703/contest`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -82,7 +84,7 @@ const FetchData = (props) => {
     const usersubmission = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:3000/api/${storedUsername}/submission?limit=10`;
+            let url = `http://localhost:6001/prateeksrivastav703/submission?limit=10`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -102,7 +104,7 @@ const FetchData = (props) => {
     const useracsubmission = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:3000/api/${storedUsername}/acSubmission?limit=10`;
+            let url = `http://localhost:6001/prateeksrivastav703/acSubmission?limit=10`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -124,10 +126,10 @@ const FetchData = (props) => {
             console.log("storedUsername");
             console.log(storedUsername);
             try {
-                let url = `http://localhost:3000/api/${storedUsername}`;
-                let urlsolve = `http://localhost:3000/api/${storedUsername}/solved`;
-                let urlbadge = `http://localhost:3000/api/${storedUsername}/badges`;
-                let POTD = `http://localhost:3000/api/daily`;
+                let url = `http://localhost:6001/prateeksrivastav703`;
+                let urlsolve = `http://localhost:6001/prateeksrivastav703/solved`;
+                let urlbadge = `http://localhost:6001/prateeksrivastav703/badges`;
+                let POTD = `http://localhost:6001/daily`;
 
                 let responseData = await fetch(url);
                 let responseData2 = await fetch(urlsolve);
@@ -161,7 +163,7 @@ const FetchData = (props) => {
     const contestdata2 = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:3000/api/${storedUsername}/contest`;
+            let url = `http://localhost:6001/prateeksrivastav703/contest`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();

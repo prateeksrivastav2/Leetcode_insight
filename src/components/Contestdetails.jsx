@@ -38,6 +38,7 @@ const Contestdetails = () => {
 
     useEffect(() => {
         setDetails();
+        console.log(Contestdata)
     }, [Contestdata]);
 
     useEffect(() => {
@@ -53,7 +54,8 @@ const Contestdetails = () => {
 
         const rating = Contestdata.contestRating;
         const formattedRating = rating !== undefined && rating !== null ? parseFloat(rating.toFixed(2)) : null;
-        setuserRating(formattedRating);
+        setuserRating
+        (formattedRating);
     }, [contestName, contestRating, avgSolved]);
 
     const data = {
