@@ -4,35 +4,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Submission = () => {
-    const context = useContext(leetcodedata);
-    const { setuseracSubmissiondata,setuserSubmissiondata,useracSubmissiondata, userSubmissiondata, limit, setLimit,usersubmission,useracsubmission } = context;
-    const [Question, setQuestion] = useState([]);
-    const [Questiondata, setQuestiondata] = useState(userSubmissiondata);
+  const context = useContext(leetcodedata);
+  const { setuseracSubmissiondata,setuserSubmissiondata,useracSubmissiondata, userSubmissiondata, limit, setLimit, usersubmission, useracsubmission } = context;
+  const [Question, setQuestion] = useState([]);
+  const [Questiondata, setQuestiondata] = useState(userSubmissiondata);
     const [newLimit,setNewLimit]=useState(limit);
 
-    const storeQuestion = () => {
-        if (Array.isArray(Questiondata.submission)) {
-            for (let submission of Questiondata.submission) {
-                setQuestion((prevacQuestion) => {
-                    return [...prevacQuestion, { title: submission.title, status: submission.statusDisplay }];
-                });
-            }
-        }
-    };
+  const storeQuestion = () => {
+    if (Array.isArray(Questiondata.submission)) {
+      for (let submission of Questiondata.submission) {
+        setQuestion((prevacQuestion) => {
+          return [...prevacQuestion, { title: submission.title, status: submission.statusDisplay }];
+        });
+      }
+    }
+  };
 
-    const handleSubmission = () => {
-        if (Questiondata === userSubmissiondata) {
-            console.log("click1");
-            setQuestion([]);
-            setQuestiondata(useracSubmissiondata);
-        } else {
-            console.log("click2");
-            setQuestion([]);
-            setQuestiondata(userSubmissiondata);
-        }
-        console.log(Questiondata)
-        storeQuestion();
-    };
+  const handleSubmission = () => {
+    if (Questiondata === userSubmissiondata) {
+      setQuestion([]);
+      setQuestiondata(useracSubmissiondata);
+    } else {
+      setQuestion([]);
+      setQuestiondata(userSubmissiondata);
+    }
+    storeQuestion();
+  };
     const usersubmission2 = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
@@ -88,51 +85,60 @@ const Submission = () => {
         storeQuestion();
     };
 
-    const handelquestion = (name) => {
-        const naam = name.toLowerCase().replace(/\s+/g, '-');
-        window.open(`https://leetcode.com/problems/${naam}/`, '_blank');
-    }
+  const handelquestion = (name) => {
+    const naam = name.toLowerCase().replace(/\s+/g, '-');
+    window.open(`https://leetcode.com/problems/${naam}/`, '_blank');
+  }
 
-    useEffect(() => {
-        setQuestion([]);
-        storeQuestion();
-    }, [Questiondata]);
+  useEffect(() => {
+    setQuestion([]);
+    storeQuestion();
+  }, [Questiondata]);
 
-    const cardStyles = {
-        width: '70vw',
-        height: 'fit-content',
-        background: 'linear-gradient(to bottom, #333, #000)',
-        color: '#fff',
-        boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
-        borderRadius: '8px',
-        margin: '3vw 3vw 0vw 0vw',
-        padding: 0,
-        display: 'flex',
-        flexDirection: 'column',
-    };
+  const cardStyles = {
+    width: '70vw',
+    height: 'fit-content',
+    background: 'linear-gradient(to bottom, #333, #000)',
+    color: '#fff',
+    boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
+    borderRadius: '8px',
+    margin: '3vw 3vw 0vw 0vw',
+    padding: '1.5rem',
+    display: 'flex',
+    flexDirection: 'column',
+  };
 
-    const containerStyles = {
-        display: 'flex',
-        justifyContent: 'space-between',
-        textAlign: 'right',
-    };
+  const containerStyles = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    textAlign: 'right',
+    padding: '0.5rem 0',
+    borderBottom: '1px solid #fff',
+  };
 
-    const itemStyles = {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        border: '1px solid #fff',
-        borderRadius: '4px',
-        margin: '4px',
-        padding: '8px',
-        transition: 'background-color 0.3s ease',
-        cursor: 'pointer',
-    };
+  const itemStyles = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    border: '1px solid #fff',
+    borderRadius: '4px',
+    margin: '0.5rem',
+    padding: '1rem',
+    transition: 'background-color 0.3s ease',
+    cursor: 'pointer',
+  };
 
-    const itemHoverStyles = {
-        backgroundColor: '#555',
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    };
+  const itemHoverStyles = {
+    backgroundColor: '#555',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  };
+
+  const footerStyles = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '0.5rem 0',
+  };
 
     return (
         <>

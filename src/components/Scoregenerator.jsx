@@ -1,12 +1,17 @@
-import React from 'react'
-import { useContext,useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import leetcodedata from '../state/context';
-import { useEffect } from 'react';
+
 const Scoregenerator = () => {
     const context = useContext(leetcodedata);
-    const { userdata, userBadges, userdata2, userSolved, userSolved2, Contestdata, Contestdata2, userBadges2 } = context;
-    // const [finalScore1,setfinalScore1]=(0);
-    // const [finalScore2,setfinalScore2]=(0);
+    const {
+        Contestdata,
+        Contestdata2,
+        userSolved,
+        userSolved2,
+    } = context;
+
+    const [finalScore1, setFinalScore1] = useState(0);
+    const [finalScore2, setFinalScore2] = useState(0);
 
     const calculateRating = () => {
         const rating1 = Contestdata.contestRating;
@@ -14,46 +19,56 @@ const Scoregenerator = () => {
             rating1 !== undefined && rating1 !== null
                 ? parseFloat(rating1.toFixed(0))
                 : 1500;
+
         const rating2 = Contestdata2.contestRating;
         const formattedRating2 =
             rating2 !== undefined && rating2 !== null
                 ? parseFloat(rating2.toFixed(0))
                 : 1500;
+
         if (formattedRating1 !== null && formattedRating2 !== null) {
-            let ScoreDiff = formattedRating2 - formattedRating1;
-            let divi=100;
-            let divider=2.0;
-            while (ScoreDiff > 0) {
-                ScoreDiff-=100;
-                if(ScoreDiff<0)divi=100+ScoreDiff;
-                if(formattedRating1>formattedRating2){
-                    // let finalScore1=
-                    // setfinalScore1((prev)=>(prev+=((divi)/divider)));
-                }
-                else{
-                    // setfinalScore2((prev)=>(prev+=((divi)/divider)));
-                }
-                divider+=0.5;
+            let scoreDiff = formattedRating2 - formattedRating1;
+            let divider = 2.0;
+
+            while (scoreDiff > 0) {
+                setFinalScore1((prev) => prev + Math.min(100, scoreDiff) / divider);
+                scoreDiff -= 100;
+                divider += 0.5;
+            }
+
+            scoreDiff = Math.abs(formattedRating1 - formattedRating2);
+            divider = 2.0;
+
+            while (scoreDiff > 0) {
+                setFinalScore2((prev) => prev + Math.min(100, scoreDiff) / divider);
+                scoreDiff -= 100;
+                divider += 0.5;
             }
         }
-    }
-    const calculateBadges=()=>{
+    };
 
-    }
-    const calculateProblem=()=>{
-        const Easy1= userSolved.easySolved;
-        const Medium1= userSolved.mediumSolved;
-        const Hard1 = userSolved.hardSolved;
-        const Easy2= userSolved2.easySolved;
-        const Medium2= userSolved2.mediumSolved;
-        const Hard2 = userSolved2.hardSolved;
+    const calculateBadges = () => {
+        // Your logic for calculating badges
+    };
 
-    }
+    const calculateProblem = () => {
+        // Your logic for calculating solved problems
+    };
+
+    useEffect(() => {
+        calculateRating();
+        calculateBadges();
+        calculateProblem();
+    }, [Contestdata, Contestdata2, userSolved, userSolved2]);
+
     return (
         <>
-        aa gya a
+            <div>
+                <p>Final Score 1: {finalScore1}</p>
+                <p>Final Score 2: {finalScore2}</p>
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default Scoregenerator;
