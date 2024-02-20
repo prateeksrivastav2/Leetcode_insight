@@ -49,6 +49,7 @@ const Scoregenerator = () => {
 
     const calculateBadges = () => {
         // Your logic for calculating badges
+        
     };
 
     const calculateProblem = () => {
