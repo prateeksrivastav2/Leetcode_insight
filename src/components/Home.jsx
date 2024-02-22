@@ -77,8 +77,16 @@ const Home = () => {
         return (
             <div>
             <div style={{ fontSize: '1.5rem' }}>Haven't solved the POTD yet? Click below to check it out</div>
-            <div style={{ fontSize: '1rem' }}>Difficulty: {difficulty}</div>
             <div style={{ margin: '1vw' }}><a href={questionLink} target="_blank" rel="noopener noreferrer"><h5>{questionTitle}</h5></a></div>
+            <div style={{ fontSize: '1rem' }}>Difficulty: {difficulty}</div>
+            {Contestdata.contestAttend !== 0 ? 
+            Contestdata.contestRating >= 1500 ?
+            <div>Average rating increase per contest : {((Contestdata.contestRating-1500) / Contestdata.contestAttend).toFixed(2)}</div>
+            :
+            <div>Average rating decrease per contest : {((-Contestdata.contestRating+1500) / Contestdata.contestAttend).toFixed(2)}</div>
+            :
+            ""
+    }
         </div>
         );
     };

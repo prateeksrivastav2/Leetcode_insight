@@ -62,7 +62,7 @@ const EntryPage = () => {
           <div className="card-body">
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="userId">
-                <Form.Label>Leetcode Handel</Form.Label>
+                <Form.Label>Leetcode Handle</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Username"

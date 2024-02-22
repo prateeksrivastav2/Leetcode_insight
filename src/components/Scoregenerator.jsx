@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import leetcodedata from '../state/context';
+import ContestComparison from './CommonContext';
+// import {Contestdata,Contestdata2} from '../state/fetchdata'
+
 import CompareProblems from './CompareProblems';
 
 const Scoregenerator = () => {
@@ -12,6 +15,8 @@ const Scoregenerator = () => {
         userSolved,
         userSolved2,
     } = context;
+
+    const [count,setCount] = useState(1);
 
     const [finalScore1, setFinalScore1] = useState(0);
     const [finalScore2, setFinalScore2] = useState(0);
@@ -115,13 +120,26 @@ const Scoregenerator = () => {
         calculateRating();
         // calculateBadges();
         // calculateProblem();
+        console.log("pahle ka",Contestdata.contestParticipation);
+        console.log("dusre ka",Contestdata2.contestParticipation);
     });
 
     return (
         <>
             <div>
-                <p>Final Score 1: {finalScore1}</p>
-                <p>Final Score 2: {finalScore2}</p>
+                <br /><br />
+                <p style={{color:"white"}}>Final Score of {localStorage.getItem('userId')}: {finalScore1}</p>
+                <p style={{color:"white"}}>Final Score {localStorage.getItem('userId2')}: {finalScore2}</p>
+            </div>
+            <div>
+                {/* first user : {localStorage.getItem("userId")}
+                <br />
+                second user : {localStorage.getItem("userId2")}
+                <br /> */}
+                <ContestComparison
+                user1Contests={Contestdata.contestParticipation}
+                user2Contests={Contestdata2.contestParticipation}
+            />
 
             </div>
             <div>
