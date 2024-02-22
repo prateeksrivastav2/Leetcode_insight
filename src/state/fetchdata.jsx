@@ -42,7 +42,7 @@ const FetchData = (props) => {
                 if (!responseData.ok) throw new Error(parsedData.message);
                 if (!responseData2.ok) throw new Error(parsedData2.message);
                 if (!responseData3.ok) throw new Error(parsedData3.message);
-                console.log(parsedData);
+                console.log(parsedData2);
     
                 setuserdata(parsedData);
                 setSolved(parsedData2);
@@ -53,9 +53,9 @@ const FetchData = (props) => {
                 console.log('Error fetching data:', error.message);
             }
     
-            await contestdata();
-            await usersubmission();
-            await useracsubmission();
+            contestdata();
+            usersubmission();
+            useracsubmission();
             // setuseapionce(true);
         } else {
             window.location.replace('/');
@@ -89,6 +89,7 @@ const FetchData = (props) => {
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
+                console.log(parsedData);
 
                 if (!responseData.ok) throw new Error(parsedData.message);
 
@@ -130,12 +131,12 @@ const FetchData = (props) => {
                 let url = `http://localhost:6001/${storedUsername}`;
                 let urlsolve = `http://localhost:6001/${storedUsername}/solved`;
                 let urlbadge = `http://localhost:6001/${storedUsername}/badges`;
-                let POTD = `http://localhost:6001/daily`;
+                // let POTD = `http://localhost:6001/daily`;
 
                 let responseData = await fetch(url);
                 let responseData2 = await fetch(urlsolve);
                 let responseData3 = await fetch(urlbadge);
-                let responseData4 = await fetch(POTD);
+                // let responseData4 = await fetch(POTD);
 
                 let parsedData = await responseData.json();
                 let parsedData2 = await responseData2.json();
@@ -162,7 +163,7 @@ const FetchData = (props) => {
     };
 
     const contestdata2 = async () => {
-        let storedUsername = localStorage.getItem('userId');
+        let storedUsername = localStorage.getItem('userId2');
         if (storedUsername) {
             let url = `http://localhost:6001/${storedUsername}/contest`;
             try {

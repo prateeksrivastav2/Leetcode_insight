@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import leetcodedata from '../state/context';
+import CompareProblems from './CompareProblems';
 
 const Scoregenerator = () => {
     const context = useContext(leetcodedata);
     const {
+        userBadges,
+        userBadges2,
         Contestdata,
         Contestdata2,
         userSolved,
@@ -27,16 +30,19 @@ const Scoregenerator = () => {
                 : 1500;
 
         if (formattedRating1 !== null && formattedRating2 !== null) {
+            
             let scoreDiff = formattedRating2 - formattedRating1;
             let divider = 2.0;
 
+            console.log(scoreDiff);
+            console.log("scoreDiff");
             while (scoreDiff > 0) {
                 setFinalScore1((prev) => prev + Math.min(100, scoreDiff) / divider);
                 scoreDiff -= 100;
                 divider += 0.5;
             }
-
-            scoreDiff = Math.abs(formattedRating1 - formattedRating2);
+            scoreDiff = formattedRating2 - formattedRating1;
+            scoreDiff*=-1;
             divider = 2.0;
 
             while (scoreDiff > 0) {
@@ -44,29 +50,82 @@ const Scoregenerator = () => {
                 scoreDiff -= 100;
                 divider += 0.5;
             }
+            console.log(finalScore1+" "+finalScore2);
         }
     };
 
     const calculateBadges = () => {
-        // Your logic for calculating badges
-        
+        // Your logic for calculating badge
+        let score=0,score2=0;
+        for(let index=0;index<userBadges.badges.length;index++){
+            if(userBadges.badges[index].displayName == "Knight"){
+                score+=15;
+            }
+            else if(userBadges.badges[index].displayName == "Guardian"){
+                score+=30;
+            }
+            else
+            score+=2;
+        }
+        for(let index=0;index<userBadges2.badges.length;index++){
+            if(userBadges2.badges[index].displayName == "Knight"){
+                score2+=15;
+            }
+            else if(userBadges2.badges[index].displayName == "Guardian"){
+                score2+=30;
+            }
+            else
+            score2+=2;
+        }
+        score=score+finalScore1;
+        score2=score2+finalScore2;
+        setFinalScore1(score);
+        setFinalScore2(score2);
+        // console.log(score+" "+score2);
+        // console.log("score   score2");
+
     };
 
     const calculateProblem = () => {
         // Your logic for calculating solved problems
+        let a=userSolved.easySolved, b=userSolved.mediumSolved, c=userSolved.hardSolved;
+        let a2=userSolved2.easySolved, b2=userSolved2.mediumSolved, c2=userSolved2.hardSolved;
+        let score1=0,score2=0;
+        let s1=a-a2;
+        let s2=b-b2;
+        let s3=c-c2;
+        let ss1=a2-a;
+        let ss2=b2-b;
+        let ss3=c2-c;
+        score1+=s1*1+s2*2+s3*3;
+        score2+=ss1*1+ss2*2+ss3*3;
+        if(score1<0)score1=score2/2;
+        if(score2<0)score2=score1/2;
+        score1=score1+finalScore1;
+        score2=score2+finalScore2;
+        setFinalScore1(score1);
+        setFinalScore2(score2);
+        // console.log(score1+" "+score2);
+        // console.log("score   score2");
+
+
     };
 
     useEffect(() => {
         calculateRating();
-        calculateBadges();
-        calculateProblem();
-    }, [Contestdata, Contestdata2, userSolved, userSolved2]);
+        // calculateBadges();
+        // calculateProblem();
+    });
 
     return (
         <>
             <div>
                 <p>Final Score 1: {finalScore1}</p>
                 <p>Final Score 2: {finalScore2}</p>
+
+            </div>
+            <div>
+                <CompareProblems/>
             </div>
         </>
     );

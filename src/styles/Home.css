@@ -1,18 +1,20 @@
-.firstdiv{
+.firstdiv {
   border: 2px black solid;
   background-color: rgb(0, 0, 0);
   color: white;
   padding: 1%;
-  box-shadow: 100px;
+  /* Corrected box-shadow syntax */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-.seconddiv{
+
+.seconddiv {
   padding: 1%;
   border-radius: 1%;
   background-color: rgb(0, 0, 0);
   border: 2px black solid;
 }
+
 .box {
-  
   border-radius: 4%;
   color: white;
   --border-size: 3px;
@@ -31,24 +33,21 @@
     cover;
   background-position: center center;
   background-repeat: no-repeat;
-
   animation: bg-spin 3s linear infinite;
-  @keyframes bg-spin {
-    to {
-      --border-angle: 1turn;
-    }
-  }
-
-  &:hover {
-    animation-play-state: paused;
-  }
 }
 
+/* Removed SCSS syntax for hover */
+.box:hover {
+  animation-play-state: paused;
+}
+
+/* Property definition */
 @property --border-angle {
   syntax: "<angle>";
   inherits: true;
   initial-value: 0turn;
 }
+
 /* Styling for WebKit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
   width: 12px; /* Set the width of the scrollbar */
