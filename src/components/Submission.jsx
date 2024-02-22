@@ -34,7 +34,7 @@ const Submission = () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
             console.log('abhi limit hai ',limit);
-            let url = `http://localhost:3000/api/${storedUsername}/submission?limit=${limit}`;
+            let url = `http://localhost:6001/api/${storedUsername}/submission?limit=${parseInt(limit)}`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -55,7 +55,7 @@ const Submission = () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
             console.log('abhi limit hai ',limit);
-            let url = `http://localhost:3000/api/${storedUsername}/acSubmission?limit=${limit}`;
+            let url = `http://localhost:6001/api/${storedUsername}/acSubmission?limit=${parseInt(limit)}`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
