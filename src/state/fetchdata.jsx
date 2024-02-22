@@ -162,7 +162,7 @@ const FetchData = (props) => {
     };
 
     const contestdata2 = async () => {
-        let storedUsername = localStorage.getItem('userId');
+        let storedUsername = localStorage.getItem('userId2');
         if (storedUsername) {
             let url = `http://localhost:6001/${storedUsername}/contest`;
             try {

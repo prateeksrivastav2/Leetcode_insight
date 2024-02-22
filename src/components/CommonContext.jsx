@@ -2,13 +2,16 @@ import React from 'react';
 
 const ContestComparison = ({ user1Contests, user2Contests }) => {
   // Find common contests
+  
   const commonContests = user1Contests.filter((contest1) =>
     user2Contests.some((contest2) => contest1.contest.title === contest2.contest.title)
   );
 
+
   return (
     <div>
-      <h2>Common Contests and Rankings</h2>
+      {commonContests.length===0 ? "kuch ni hai" : ""}
+      <h2 style={{color:'w'}}>Common Contests and Rankings</h2>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         {commonContests.map((commonContest) => {
           // Find the corresponding contest for user2
@@ -33,18 +36,18 @@ const ContestComparison = ({ user1Contests, user2Contests }) => {
                 <strong>Contest:</strong> {commonContest.contest.title}
               </div>
               <div style={{ flex: '1' }}>
-                <strong>User 1 Ranking:</strong> {commonContest.ranking}
+                <strong>{localStorage.getItem('userId')} Ranking:</strong> {commonContest.ranking}
               </div>
               <div style={{ flex: '1' }}>
-                <strong>User 2 Ranking:</strong> {user2Contest ? user2Contest.ranking : 'N/A'}
+                <strong>{localStorage.getItem('userId2')} Ranking:</strong> {user2Contest ? user2Contest.ranking : 'N/A'}
               </div>
               {commonContest.ranking < (user2Contest ? user2Contest.ranking : 0) ? (
                 <div style={{ flex: '1', color: 'green' }}>
-                  User 1 has a better rank!
+                  {localStorage.getItem('userId')} has a better rank!
                 </div>
               ) : (
                 <div style={{ flex: '1', color: 'green' }}>
-                  User 2 has a better rank!
+                  {localStorage.getItem('userId2')} has a better rank!
                 </div>
               )}
             </div>
