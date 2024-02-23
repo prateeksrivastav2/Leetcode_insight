@@ -1,13 +1,28 @@
-import React,{useContext,useState} from 'react'
+import React, { useContext, useState } from 'react'
 import leetcodedata from "../state/context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubAlt, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 const User1 = () => {
     const context = useContext(leetcodedata);
-    const { userdata } = context;
+    const { userdata,Contestdata } = context;
     const [userRating, setuserRating] = useState(0.0);
+    const AvgRating = () => {
+        return (
+            <div>
+            {Contestdata.contestAttend !== 0 ? 
+            Contestdata.contestRating >= 1500 ?
+            <div>Average rating increase per contest : {((Contestdata.contestRating-1500) / Contestdata.contestAttend).toFixed(2)}</div>
+            :
+            <div>Average rating decrease per contest : {((-Contestdata.contestRating+1500) / Contestdata.contestAttend).toFixed(2)}</div>
+            :
+            ""
+    }
+        </div>
+        );
+    };
     return (
         <>
+           
             <div
                 style={{
                     display: "flex",
@@ -22,8 +37,8 @@ const User1 = () => {
                 <div
                     className="firstdiv box card"
                     style={{
-                        width: "34vw",
-                        height: "60vh",
+                        width: "50vw",
+                        height: "50vh",
                         backgroundColor: "lightdark",
                         margin: "3vw 2vw 0vw 1vw",
                         boxShadow: "0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)",
@@ -43,7 +58,7 @@ const User1 = () => {
                                 left: "-0.2vw",
                                 width: "6vw",
                                 height: "13vh",
-                                borderRadius: "0% 0% 20% 0%",
+                                // borderRadius: "0% 0% 20% 0%",
                                 border: "0.2vw white solid",
                                 objectFit: "cover",
                             }}
@@ -53,10 +68,7 @@ const User1 = () => {
                         </h4>
                         <p>{userdata.about}</p>
                         <p>DOB: {userdata.birthday}</p>
-                        <p>Rating: {userRating}</p>
-
-                        {/* <POTDComponent data={potd} /> */}
-
+                        <AvgRating />
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div style={{
                                 display: 'flex',

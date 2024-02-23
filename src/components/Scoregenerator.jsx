@@ -118,11 +118,6 @@ const Scoregenerator = () => {
     return (
         <>
             <div>
-                <br /><br />
-                <p style={{ color: "white" }}>Final Score of {localStorage.getItem('userId')}: {finalScore1.toFixed(2)}</p>
-                <p style={{ color: "white" }}>Final Score {localStorage.getItem('userId2')}: {finalScore2.toFixed(2)}</p>
-            </div>
-            <div>
               <ContestComparison
               user1Contests={Contestdata.contestParticipation}
               user2Contests={Contestdata2.contestParticipation}
@@ -136,6 +131,13 @@ const Scoregenerator = () => {
             </div>
             <div>
                 <User1/>
+            </div>
+            <div>
+                <br /><br />
+                <button className='btn btn-success mx-3 my-2'>Final Score of {localStorage.getItem('userId')}: {finalScore1.toFixed(2)}</button>
+                <button className='btn btn-success'>Final Score of {localStorage.getItem('userId2')}: {finalScore2.toFixed(2)}</button>
+                {/* <p style={{ color: "white" }}>Final Score of {localStorage.getItem('userId')}: {finalScore1.toFixed(2)}</p>
+                <p style={{ color: "white" }}>Final Score {localStorage.getItem('userId2')}: {finalScore2.toFixed(2)}</p> */}
             </div>
         </>
     );

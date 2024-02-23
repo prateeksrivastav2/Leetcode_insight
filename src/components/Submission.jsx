@@ -169,22 +169,9 @@ const Submission = () => {
                 <div className="card-footer text-body-secondary">
                     {Questiondata === userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>Ac Submission</a>}
                     {Questiondata !== userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>All Submissions</a>}
-                    <label 
-                        htmlFor="limit"
-                        style={{ color: 'white', marginLeft: "1vw" }}
-                    >
-                        Limit on submission:
-                    </label>
-                    <input
-                        type="number"
-                        id="limit"
-                        value={newLimit}
-                        min="1"                        
-                        onChange={(e) => setNewLimit(parseInt(e.target.value, 10))}
-                        placeholder='10(default)'
-                    />
+                    
                     {/* Add a submit button */}
-                    <button onClick={handleSubmissionForLimitChange} className='btn btn-primary' style={{ marginLeft: "1vw" }}>Submit Limit</button>
+                    
                 </div>
             </div>
         </>
