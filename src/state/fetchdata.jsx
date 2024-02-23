@@ -47,7 +47,7 @@ const FetchData = (props) => {
                 setuserdata(parsedData);
                 setSolved(parsedData2);
                 setuserBadges(parsedData3);
-                setPotd(parsedData4)
+                setPotd(parsedData4);
             } catch (error) {
                 window.location.replace('/');
                 console.log('Error fetching data:', error.message);
