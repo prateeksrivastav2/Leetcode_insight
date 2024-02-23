@@ -117,7 +117,7 @@ const Scoregenerator = () => {
             <div>
                 <br /><br />
                 <p style={{ color: "white" }}>Final Score of {localStorage.getItem('userId')}: {finalScore1}</p>
-                <p style={{ color: "white" }}>Final Score {localStorage.getItem('userId2')}: {finalScore2}</p>
+                <p style={{ color: "white" }}>Final Score of {localStorage.getItem('userId2')}: {finalScore2}</p>
             </div>
             <div>
                 <CompareProblems />
