@@ -29,7 +29,7 @@ const User1 = () => {
                     flexDirection: "row",
                     justifyContent: "center",
                     boxSizing: "border-box",
-                    width: "100vw",
+                    width: "40vw",
                     marginTop: '2vw'
                 }}
             >
@@ -68,6 +68,7 @@ const User1 = () => {
                         </h4>
                         <p>{userdata.about}</p>
                         <p>DOB: {userdata.birthday}</p>
+                        <p>Rating:{Contestdata.contestRating.toFixed(0)}</p>
                         <AvgRating />
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div style={{

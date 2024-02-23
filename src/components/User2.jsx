@@ -31,7 +31,7 @@ const User1 = () => {
                     flexDirection: "row",
                     justifyContent: "center",
                     boxSizing: "border-box",
-                    width: "100vw",
+                    width: "40vw",
                     marginTop: '2vw'
                 }}
             >
@@ -70,24 +70,27 @@ const User1 = () => {
                         </h4>
                         <p>{userdata2.about}</p>
                         <p>DOB: {userdata2.birthday}</p>
+                        <p>Contest rating :{Contestdata2.contestRating.toFixed(0)}</p>
                         <AvgRating />
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                             }}>
+                                <a href={userdata2.gitHub} target='_blank'>
                                 <FontAwesomeIcon
                                     className=""
                                     size="2x"
                                     style={{ cursor: "pointer", marginRight: "1vw" }}
                                     icon={faGithubAlt}
-                                />
+                                /></a>
+                                <a href={userdata2.linkedIN} target='_blank'>
                                 <FontAwesomeIcon
                                     className=""
                                     size="2x"
                                     style={{ cursor: "pointer" }}
                                     icon={faLinkedinIn}
-                                />
+                                /></a>
                             </div>
                         </div>
                     </ul>
