@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import leetcodedata from '../state/context';
 import CompareProblems from './CompareProblems';
 import ContestComparison from './CommonContext';
+import User2 from './user2';
+import User1 from './User1'
 
 const Scoregenerator = () => {
     const context = useContext(leetcodedata);
@@ -128,6 +130,12 @@ const Scoregenerator = () => {
             </div>
             <div>
                 <CompareProblems />
+            </div>
+            <div>
+                <User2/>
+            </div>
+            <div>
+                <User1/>
             </div>
         </>
     );

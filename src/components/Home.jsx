@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import leetcodedata from "../state/context";
 import "../styles/Home.css";
 import Contestdetails from "./Contestdetails";
 import Solved from "./solved";
 import Submission from "./Submission";
+import leetcodedata from "../state/context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubAlt, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { Navigate, useNavigate } from "react-router-dom";
