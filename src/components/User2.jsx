@@ -13,9 +13,9 @@ const User1 = () => {
             <div>
             {Contestdata2.contestAttend !== 0 ? 
             Contestdata2.contestRating >= 1500 ?
-            <div>Average rating increase per contest : {((Contestdata2.contestRating-1500) / Contestdata2.contestAttend).toFixed(2)}</div>
+            <div>Average rating increase per contest : {((Contestdata2.contestRating-1500) / Contestdata2.contestAttend)}</div>
             :
-            <div>Average rating decrease per contest : {((-Contestdata2.contestRating+1500) / Contestdata2.contestAttend).toFixed(2)}</div>
+            <div>Average rating decrease per contest : {((-Contestdata2.contestRating+1500) / Contestdata2.contestAttend)}</div>
             :
             ""
     }
@@ -70,7 +70,7 @@ const User1 = () => {
                         </h4>
                         <p>{userdata2.about}</p>
                         <p>DOB: {userdata2.birthday}</p>
-                        <p>Contest rating :{Contestdata2.contestRating.toFixed(0)}</p>
+                        <p>Contest rating :{Contestdata2.contestRating}</p>
                         <AvgRating />
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div style={{

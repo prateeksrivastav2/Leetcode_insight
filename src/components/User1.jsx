@@ -6,14 +6,15 @@ const User1 = () => {
     const context = useContext(leetcodedata);
     const { userdata,Contestdata } = context;
     const [userRating, setuserRating] = useState(0.0);
+    let rating=parseInt(userRating).toFixed(0);
     const AvgRating = () => {
         return (
             <div>
             {Contestdata.contestAttend !== 0 ? 
             Contestdata.contestRating >= 1500 ?
-            <div>Average rating increase per contest : {((Contestdata.contestRating-1500) / Contestdata.contestAttend).toFixed(2)}</div>
+            <div>Average rating increase per contest : {((Contestdata.contestRating-1500) / Contestdata.contestAttend)}</div>
             :
-            <div>Average rating decrease per contest : {((-Contestdata.contestRating+1500) / Contestdata.contestAttend).toFixed(2)}</div>
+            <div>Average rating decrease per contest : {((-Contestdata.contestRating+1500) / Contestdata.contestAttend)}</div>
             :
             ""
     }
@@ -68,25 +69,27 @@ const User1 = () => {
                         </h4>
                         <p>{userdata.about}</p>
                         <p>DOB: {userdata.birthday}</p>
-                        <p>Rating:{Contestdata.contestRating.toFixed(0)}</p>
+                        <p>Rating:{Contestdata.contestRating}</p>
                         <AvgRating />
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                             }}>
+                                <a href={userdata.gitHub} target='_blank'>
                                 <FontAwesomeIcon
                                     className=""
                                     size="2x"
                                     style={{ cursor: "pointer", marginRight: "1vw" }}
                                     icon={faGithubAlt}
-                                />
+                                /></a>
+                                <a href={userdata.linkedIN} target='_blank'>
                                 <FontAwesomeIcon
                                     className=""
                                     size="2x"
                                     style={{ cursor: "pointer" }}
                                     icon={faLinkedinIn}
-                                />
+                                /></a>
                             </div>
                         </div>
                     </ul>
