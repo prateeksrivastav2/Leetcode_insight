@@ -49,7 +49,7 @@ const EntryPage = () => {
     <>
       <Container
         style={{
-          display: 'flex',
+          // display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           height: '100vh', // Full height of the viewport
@@ -90,6 +90,14 @@ const EntryPage = () => {
             </Form>
           </div>
         </div>
+        <div>
+
+        <footer className="text-white">
+          <p>
+            Copyright @ PsSr
+          </p>
+        </footer>
+      </div>
       </Container>
     </>
   );
