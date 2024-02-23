@@ -10,7 +10,7 @@ const ContestComparison = ({ user1Contests, user2Contests }) => {
     <div>
       {commonContests.length === 0 ? (
         <div style={{ color: 'white' }}>
-          "kuch common contests ni hai"
+          kuch common contests ni hai
         </div>
       ) : (
         <>

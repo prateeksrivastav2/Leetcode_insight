@@ -18,14 +18,14 @@ const CompareProblems = () => {
     labels: ['Easy', 'Medium', 'Hard'],
     datasets: [
       {
-        label: 'User 1',
+        label: localStorage.getItem('userId'),
         data: [userSolved.easySolved, userSolved.mediumSolved, userSolved.hardSolved],
         backgroundColor: 'blue', // Blue color with transparency
         // borderColor: 'rgba(54, 162, 235, 1)', // Blue color
         // borderWidth: 1,
       },
       {
-        label: 'User 2',
+        label: localStorage.getItem('userId2'),
         data: [userSolved2.easySolved, userSolved2.mediumSolved, userSolved2.hardSolved],
         backgroundColor: 'green', // Red color with transparency
         // borderColor: 'rgba(255, 99, 132, 1)', // Red color
@@ -33,7 +33,7 @@ const CompareProblems = () => {
       },
     ],
   };
-  
+ 
   
 
   const options = {
