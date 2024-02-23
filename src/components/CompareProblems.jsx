@@ -83,7 +83,7 @@ const CompareProblems = () => {
       <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Bar data={data} options={options} />
       </div>
-            
+          
     </div>
     </div>
   );

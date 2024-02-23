@@ -1,6 +1,11 @@
 import React from 'react';
 
 const ContestComparison = ({ user1Contests, user2Contests }) => {
+  // Check if either user1Contests or user2Contests is undefined
+  if (!user1Contests || !user2Contests) {
+    return null; // or return some default UI or loading indicator
+  }
+
   // Find common contests
   const commonContests = user1Contests.filter((contest1) =>
     user2Contests.some((contest2) => contest1.contest.title === contest2.contest.title)
@@ -10,7 +15,7 @@ const ContestComparison = ({ user1Contests, user2Contests }) => {
     <div>
       {commonContests.length === 0 ? (
         <div style={{ color: 'white' }}>
-          "kuch common contests ni hai"
+          kuch common contests ni hai
         </div>
       ) : (
         <>

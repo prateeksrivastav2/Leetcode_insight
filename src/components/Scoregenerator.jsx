@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import leetcodedata from '../state/context';
 import CompareProblems from './CompareProblems';
+import ContestComparison from './CommonContext';
 
 const Scoregenerator = () => {
     const context = useContext(leetcodedata);
@@ -116,8 +117,14 @@ const Scoregenerator = () => {
         <>
             <div>
                 <br /><br />
-                <p style={{ color: "white" }}>Final Score of {localStorage.getItem('userId')}: {finalScore1}</p>
-                <p style={{ color: "white" }}>Final Score of {localStorage.getItem('userId2')}: {finalScore2}</p>
+                <p style={{ color: "white" }}>Final Score of {localStorage.getItem('userId')}: {finalScore1.toFixed(2)}</p>
+                <p style={{ color: "white" }}>Final Score {localStorage.getItem('userId2')}: {finalScore2.toFixed(2)}</p>
+            </div>
+            <div>
+              <ContestComparison
+              user1Contests={Contestdata.contestParticipation}
+              user2Contests={Contestdata2.contestParticipation}
+              />
             </div>
             <div>
                 <CompareProblems />

@@ -173,6 +173,7 @@ const FetchData = (props) => {
                 if (!responseData.ok) throw new Error(parsedData.message);
 
                 setContestdata2(parsedData);
+                // console.log(parsedData);
             } catch (error) {
                 window.location.replace('/');
                 console.log('Error fetching data:', error.message);
