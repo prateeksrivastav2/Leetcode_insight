@@ -169,7 +169,7 @@ const Submission = () => {
                 <div className="card-footer text-body-secondary">
                     {Questiondata === userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>Ac Submission</a>}
                     {Questiondata !== userSubmissiondata && <a onClick={handleSubmission} className='btn btn-primary'>All Submissions</a>}
-                    <label 
+                    {/* <label 
                         htmlFor="limit"
                         style={{ color: 'white', marginLeft: "1vw" }}
                     >
@@ -184,7 +184,7 @@ const Submission = () => {
                         placeholder='10(default)'
                     />
                     {/* Add a submit button */}
-                    <button onClick={handleSubmissionForLimitChange} className='btn btn-primary' style={{ marginLeft: "1vw" }}>Submit Limit</button>
+                    {/* <button onClick={handleSubmissionForLimitChange} className='btn btn-primary' style={{ marginLeft: "1vw" }}>Submit Limit</button> */} */}
                 </div>
             </div>
         </>

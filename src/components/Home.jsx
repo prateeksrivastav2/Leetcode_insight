@@ -147,18 +147,24 @@ const Home = () => {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                             }}>
-                                <FontAwesomeIcon
+                            <div style={{ display: userdata.linkedIN === null ? "none" : "" }}>
+                                <a href={userdata.linkedIN} target="_blank">
+                                    <FontAwesomeIcon
                                     className=""
                                     size="2x"
                                     style={{ cursor: "pointer", marginRight: "1vw" }}
-                                    icon={faGithubAlt}
-                                />
+                                    icon={faLinkedinIn}
+                                /></a>
+                                </div>
+                                <div style={{ display: userdata.gitHub === null ? "none" : "" }}>
+                                <a href={userdata.gitHub} target="_blank">
                                 <FontAwesomeIcon
                                     className=""
                                     size="2x"
                                     style={{ cursor: "pointer" }}
-                                    icon={faLinkedinIn}
-                                />
+                                    icon={faGithubAlt}
+                                /></a>
+                                </div>
                             </div>
                         </div>
                     </ul>
