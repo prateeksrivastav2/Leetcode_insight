@@ -32,7 +32,7 @@ const User1 = (props) => {
                     justifyContent: "center",
                     boxSizing: "border-box",
                     width: "40vw",
-                    marginTop: '2vw'
+                    marginTop: '2vw',
                 }}
             >
                 {/* First Div (20vw) */}
