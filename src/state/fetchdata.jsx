@@ -24,10 +24,10 @@ const FetchData = (props) => {
             console.log("storedUsername");
             console.log(storedUsername);
             try {
-                let url =`http://localhost:6001/${storedUsername}`; // Dynamically generate URL based on storedUsername
-                let urlsolve = `http://localhost:6001/${storedUsername}/solved`;
-                let urlbadge = `http://localhost:6001/${storedUsername}/badges`;
-                let POTD = `http://localhost:6001/daily`;
+                let url =`https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}`; // Dynamically generate URL based on storedUsername
+                let urlsolve = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/solved`;
+                let urlbadge = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/badges`;
+                let POTD = `https://alfa-leetcode-api-kohz.onrender.com/daily`;
     
                 let responseData = await fetch(url);
                 let responseData2 = await fetch(urlsolve);
@@ -66,7 +66,7 @@ const FetchData = (props) => {
     const contestdata = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:6001/${storedUsername}/contest`;
+            let url = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/contest`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -86,7 +86,7 @@ const FetchData = (props) => {
     const usersubmission = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:6001/${storedUsername}/submission?limit=10`;
+            let url = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/submission?limit=10`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -107,7 +107,7 @@ const FetchData = (props) => {
     const useracsubmission = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            let url = `http://localhost:6001/${storedUsername}/acSubmission?limit=10`;
+            let url = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/acSubmission?limit=10`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
@@ -129,10 +129,10 @@ const FetchData = (props) => {
             console.log("storedUsername");
             console.log(storedUsername);
             try {
-                let url = `http://localhost:6001/${storedUsername}`;
-                let urlsolve = `http://localhost:6001/${storedUsername}/solved`;
-                let urlbadge = `http://localhost:6001/${storedUsername}/badges`;
-                // let POTD = `http://localhost:6001/daily`;
+                let url = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}`;
+                let urlsolve = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/solved`;
+                let urlbadge = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/badges`;
+                // let POTD = `https://alfa-leetcode-api-kohz.onrender.com/daily`;
 
                 let responseData = await fetch(url);
                 let responseData2 = await fetch(urlsolve);
@@ -166,7 +166,7 @@ const FetchData = (props) => {
     const contestdata2 = async () => {
         let storedUsername = localStorage.getItem('userId2');
         if (storedUsername) {
-            let url = `http://localhost:6001/${storedUsername}/contest`;
+            let url = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/contest`;
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();

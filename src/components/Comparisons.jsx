@@ -25,7 +25,10 @@ const Comparisons = () => {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    overflowY: 'hidden'
+    overflowY: 'hidden',
+    marginTop: '26vh',
+    marginLeft:'auto',
+    marginRight: 'auto',
   };
 
   // Load user ID from localStorage on component mount
@@ -47,6 +50,16 @@ const Comparisons = () => {
     } else if (field === "userId2") {
       setUserId2(value);
     }
+  };
+  const footerStyles = {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    backgroundColor: '#333',
+    color: '#fff',
+    textAlign: 'center',
+    padding: '10px',
   };
 
   const handleSubmit = async (event) => {
@@ -112,7 +125,7 @@ const Comparisons = () => {
       </div>
       <div>
 
-        <footer className="text-white">
+        <footer className="text-white" style={footerStyles}>
           <p>
             Copyright @ PsSr
           </p>

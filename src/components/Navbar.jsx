@@ -1,9 +1,7 @@
-import React, { useState,useContext } from 'react';
-import Leetcodedata from '../state/context';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-  const context = useContext(Leetcodedata);
   const [expanded, setExpanded] = useState(false);
 
   const toggleNavbar = () => {
@@ -12,7 +10,7 @@ const Navbar = () => {
 
   const navbarStyles = {
     background: 'linear-gradient(to left, #333, #000)',
-    height: expanded ? '35vw' : '5vw',
+    height: expanded ? '150px' : '60px',
     transition: 'width 0.3s ease',
     width: expanded ? '100%' : '100%',
   };
@@ -27,10 +25,10 @@ const Navbar = () => {
         <div className={`collapse navbar-collapse ${expanded ? 'show' : ''}`} id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active text-white" aria-current="page" href="/">Home</a>
+              <Link className="nav-link active text-white" aria-current="page" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white" href="/comparisons">Compare</a>
+              <Link className="nav-link text-white" to="/comparisons">Compare</Link>
             </li>
           </ul>
         </div>
