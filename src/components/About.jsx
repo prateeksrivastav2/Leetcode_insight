@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 const About = () => {
   return (
@@ -8,13 +10,11 @@ const About = () => {
         marginTop: "8vh",
         color: "white",
         fontSize: "2vh",
-        backgroundColor: "black",
+        background: "linear-gradient(to left, #333, #000)",
+        padding: "2vw",
       }}
     >
-      <br />
-      <b>
-      Welcome to LeetCode visualizer
-      </b>
+      <b>Welcome to LeetCode visualizer</b>
       <br />
       <br />
       At LeetCode visualizer, we believe in the power of coding and continuous
@@ -32,10 +32,13 @@ const About = () => {
       <br />
       <br />
       <b>Key Features</b>
-      <br />- <b>LeetCode Data Retrieval:</b> Easily retrieve your LeetCode user
+      <br />
+      - <b>LeetCode Data Retrieval:</b> Easily retrieve your LeetCode user
       data, including rating, problems solved, and contest history.
-      <br />- <b>Comparator:</b> Compare your progress with other users.
-      <br />- <b>Contest Performance:</b> Dive into detailed analyses of your
+      <br />
+      - <b>Comparator:</b> Compare your progress with other users.
+      <br />
+      - <b>Contest Performance:</b> Dive into detailed analyses of your
       performance in LeetCode contests, track your rating changes, and explore
       average problems solved.
       <br />
@@ -58,17 +61,48 @@ const About = () => {
       - Connect with fellow coders for shared learning and friendly competition.
       <br />
       <br />
-      <br />
       <b>Future Plans</b>
       <br />
-      We're continuously working on enhancing your experience on LeetCode visualizer. Stay tuned for upcoming features and improvements that will further
-      enrich your coding exploration.
+      We're continuously working on enhancing your experience on LeetCode
+      visualizer. Stay tuned for upcoming features and improvements that will
+      further enrich your coding exploration.
       <br />
       <br />
       <b>Get in Touch</b>
       <br />
       Have questions, suggestions, or just want to say hello? Feel free to reach
-      out to us at rawatsuyash78@gmail.com.
+      out to us on LinkedIn:
+      <br />
+      <br />
+      <a
+        href="https://www.linkedin.com/in/prateek-srivastav-9131aa21b/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: "none", color: "white" }}
+      >
+        <FontAwesomeIcon
+          className=""
+          size="2x"
+          style={{ cursor: "pointer", marginRight: "0.5vw" }}
+          icon={faLinkedinIn}
+        />
+        Prateek Srivastav
+      </a>
+      <br />
+      <a
+        href="https://www.linkedin.com/in/suyash-rawat-547876212/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: "none", color: "white" }}
+      >
+        <FontAwesomeIcon
+          className=""
+          size="2x"
+          style={{ cursor: "pointer", marginRight: "0.5vw" }}
+          icon={faLinkedinIn}
+        />
+        Suyash Rawat
+      </a>
       <br />
       <br /> Happy Leetcoding!
     </div>
