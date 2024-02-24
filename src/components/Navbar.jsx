@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const navbarStyles = {
     background: 'linear-gradient(to left, #333, #000)',
-    height: expanded ? '150px' : '60px',
+    height: expanded ? '30vh' : '10vh',
     transition: 'width 0.3s ease',
     width: expanded ? '100%' : '100%',
   };
@@ -29,6 +29,9 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link className="nav-link text-white" to="/comparisons">Compare</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link text-white" to="/about">About</Link>
             </li>
           </ul>
         </div>
