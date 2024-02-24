@@ -13,9 +13,9 @@ const EntryPage = () => {
   const [userId, setUserId] = useState("");
   const [ss, setss] = useState("");
   const [loader, setLoader] = useState(false);
-
+  
   const cardStyles = {
-    width: '80vw',
+    width: '70vw',
     height: 'fit-content',
     background: 'linear-gradient(to bottom, #333, #000)',
     color: '#fff',
@@ -27,12 +27,11 @@ const EntryPage = () => {
     justifyContent: 'center', // Center vertically
     alignItems: 'center', // Center horizontally
     overflowY: 'hidden',
+    margin: 'auto', // Center horizontally
     marginTop: '23vh',
-    marginLeft:'auto',
-    marginRight: 'auto',
-    marginBottom:'3vw'
-  };
 
+  };
+  
   const footerStyles = {
     position: 'fixed',
     bottom: 0,
@@ -63,7 +62,10 @@ const EntryPage = () => {
 
   return (
     <>
-      <Container style={{ width: "100vw" }}>
+      <div style={{
+        overflowY:'hidden',
+        // overflowX:'hidden'
+      }}>
         <div className="card" style={cardStyles}>
           <br />
           <h3 className="card-header">Enter Your LeetCode User ID</h3>
@@ -81,7 +83,7 @@ const EntryPage = () => {
               </Form.Group>
               <br />
               <Button variant="primary" type="submit" block disabled={loader}>
-                Show Data
+               Get Details
               </Button>
               <br />
               <br />
@@ -102,7 +104,7 @@ const EntryPage = () => {
         <footer style={footerStyles}>
           <p>Copyright @ PsSr</p>
         </footer>
-      </Container>
+      </div>
     </>
   );
 };

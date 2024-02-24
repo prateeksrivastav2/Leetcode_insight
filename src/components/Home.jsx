@@ -228,7 +228,7 @@ const Home = () => {
             </div>
             <div
                 className="d-flex"
-                style={{ alignItems: "center", justifyContent: "center" }}
+                style={{ alignItems: "center", justifyContent: "center",marginLeft:'3vw' }}
             >
                 <Submission />
             </div>
