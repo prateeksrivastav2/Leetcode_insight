@@ -27,7 +27,7 @@ const EntryPage = () => {
     justifyContent: 'center', // Center vertically
     alignItems: 'center', // Center horizontally
     overflowY: 'hidden',
-    marginTop: '26vh',
+    marginTop: '23vh',
     marginLeft:'auto',
     marginRight: 'auto',
     marginBottom:'3vw'
