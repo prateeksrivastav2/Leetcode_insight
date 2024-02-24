@@ -128,9 +128,8 @@ const Scoregenerator = () => {
   return (
     <>
       <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <User2 />
-        
         <User1 />
+        <User2 />
       </div>
       <div>
         <ContestComparison

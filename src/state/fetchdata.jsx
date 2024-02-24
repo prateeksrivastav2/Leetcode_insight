@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Leetcodedata from './context';
 
 const FetchData = (props) => {
+    const [expanded, setExpanded] = useState(false);
     const [userdata, setuserdata] = useState([]);
     const [userBadges, setuserBadges] = useState([]);
     const [userSolved, setSolved] = useState([]);
@@ -185,7 +186,7 @@ const FetchData = (props) => {
 
     return (
         <>
-            <Leetcodedata.Provider value={{ setuserSubmissiondata,setuseracSubmissiondata, usersubmission,useracsubmission,setLimit,fetchUserData,fetchUserData2, userSolved, userdata, Contestdata, userSubmissiondata, useracSubmissiondata, userBadges ,potd ,userSolved2, userdata2, Contestdata2, userBadges2 }}>
+            <Leetcodedata.Provider value={{ setuserSubmissiondata,setuseracSubmissiondata, usersubmission,useracsubmission,setLimit,fetchUserData,fetchUserData2, userSolved, userdata, Contestdata, userSubmissiondata, useracSubmissiondata, userBadges ,potd ,userSolved2, userdata2, Contestdata2, userBadges2 ,expanded,setExpanded}}>
                 {props.children}
             </Leetcodedata.Provider>
         </>

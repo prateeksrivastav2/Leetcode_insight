@@ -94,6 +94,7 @@ const Home = () => {
     return (
         <>
             <div
+            className="userInfo"
                 style={{
                     display: "flex",
                     flexDirection: "row",
@@ -137,7 +138,7 @@ const Home = () => {
                             {userdata.username}
                         </h4>
                         <p>{userdata.about}</p>
-                        <p>DOB: {userdata.birthday}</p>
+                        <p style={{display: userdata.birthday === null ? 'none' : ''}}>DOB: {userdata.birthday}</p>
                         <p>Rating: {userRating}</p>
 
                         <POTDComponent data={potd} />
@@ -169,7 +170,8 @@ const Home = () => {
                         </div>
                     </ul>
                 </div>
-                <div style={{ alignItems: "center" }}>
+                <div
+                className="middlediv" style={{ alignItems: "center",justifyContent:'center' }}>
                     <Solved />
                 </div>
                 <div

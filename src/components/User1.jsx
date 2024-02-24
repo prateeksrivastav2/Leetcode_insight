@@ -39,7 +39,7 @@ const User1 = () => {
                     className="firstdiv box card"
                     style={{
                         width: "50vw",
-                        height: "50vh",
+                        height: "30vh",
                         backgroundColor: "lightdark",
                         margin: "3vw 2vw 0vw 1vw",
                         boxShadow: "0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)",
@@ -67,23 +67,25 @@ const User1 = () => {
                         <h4 className="user" style={{ marginLeft: "6%" }}>
                             {userdata.username}
                         </h4>
-                        <p>{userdata.about}</p>
-                        <p>DOB: {userdata.birthday}</p>
+                        <p>{userdata.about} </p>
+                        <p style={{display:userdata.birthday === null ? 'none' : ''}}>DOB: {userdata.birthday}</p>
                         <p>Rating:{Contestdata.contestRating}</p>
                         <AvgRating />
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <div style={{ display: "flex",flexDirection:'row-reverse', justifyContent: "space-between" }}>
                             <div style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                             }}>
-                                <a href={userdata.gitHub} target='_blank'>
+                                <a href={userdata.gitHub} target='_blank'
+                                style={{display : userdata.gitHub === null ? 'none' : ''}}>
                                 <FontAwesomeIcon
                                     className=""
                                     size="2x"
                                     style={{ cursor: "pointer", marginRight: "1vw" }}
                                     icon={faGithubAlt}
                                 /></a>
-                                <a href={userdata.linkedIN} target='_blank'>
+                                <a href={userdata.linkedIN} target='_blank'
+                                style={{display : userdata.linkedIN === null ? 'none' : ''}}>
                                 <FontAwesomeIcon
                                     className=""
                                     size="2x"

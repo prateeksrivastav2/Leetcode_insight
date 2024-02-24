@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LinearScale, CategoryScale, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
 import leetcodedata from '../state/context';
+import 'chartjs-plugin-scroll-bar'; // Import the scrollbar plugin
 
 ChartJS.register(LinearScale, CategoryScale, Tooltip, Legend, PointElement, LineElement);
 
@@ -14,7 +15,7 @@ const Contestdetails = () => {
     const [avgSolved, setavgSolved] = useState([]);
     const [avgSolvedk, setavgSolvedk] = useState(0.0);
     const [userRating, setuserRating] = useState(0.0);
-    const [p,setP]=useState([])
+    const [p, setP] = useState([]);
 
     const setDetails = async () => {
         for (let contest of Contestdata.contestParticipation) {
@@ -32,20 +33,16 @@ const Contestdetails = () => {
             });
             setavgSolved((prevSolved) => {
                 return [...prevSolved, contest.problemsSolved];
-
             });
         }
     };
 
     useEffect(() => {
         setDetails();
-        console.log(Contestdata)
+        console.log(Contestdata);
     }, [Contestdata]);
 
     useEffect(() => {
-        // console.log(contestName);
-        // console.log(contestRating);
-        // console.log(avgSolved);
         let sum = 0;
         for (let ind = 0; ind < avgSolved.length; ind++) {
             sum += avgSolved[ind];
@@ -55,8 +52,7 @@ const Contestdetails = () => {
 
         const rating = Contestdata.contestRating;
         const formattedRating = rating !== undefined && rating !== null ? parseFloat(rating.toFixed(2)) : null;
-        setuserRating
-        (formattedRating);
+        setuserRating(formattedRating);
     }, [contestName, contestRating, avgSolved]);
 
     const data = {
@@ -77,11 +73,12 @@ const Contestdetails = () => {
             x: {
                 type: 'category',
                 labels: contestName,
+                offset: true, // Add this line to allow space for the scrollbar
             },
             y: {
                 type: 'linear',
-                stepSize: 10, // Specify the desired step size for the y-axis
-                beginAtZero: false, // Set to true if you want the y-axis to start at 0
+                stepSize: 10,
+                beginAtZero: false,
             },
         },
         maintainAspectRatio: false,
@@ -89,22 +86,17 @@ const Contestdetails = () => {
         legend: {
             position: 'right',
         },
-    };
-
-    const cardStyles = {
-        width: '70vw',
-        height: 'fit-content',
-        background: 'linear-gradient(to bottom, #333, #000)',
-        color: '#fff',
-        boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)',
-        borderRadius: '8px',
-        margin: '2vw',
+        plugins: {
+            scrollbar: {
+                mode: 'x', // Enable horizontal scrollbar
+            },
+        },
     };
 
     return (
-        <div className="card" style={cardStyles}>
+        <div className="card" style={{ width: '70vw', height: 'fit-content', background: 'linear-gradient(to bottom, #333, #000)', color: '#fff', boxShadow: '0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)', borderRadius: '8px', margin: '2vw' }}>
             <h5 className="card-header">Contest Ratings</h5>
-            <div className="card-body" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div className="card-body">
                 <Line data={data} options={options} />
             </div>
             <div>

@@ -53,7 +53,8 @@ const EntryPage = () => {
           justifyContent: 'center',
           alignItems: 'center',
           height: '100vh', // Full height of the viewport
-          overflowY: 'hidden'
+          overflowY: 'hidden',
+          marginTop:'10vh'
         }}
       >
         <div className="card" style={cardStyles}>
@@ -91,7 +92,7 @@ const EntryPage = () => {
           </div>
         </div>
         <div>
-
+          <br />
         <footer className="text-white">
           <p>
             Copyright @ PsSr
