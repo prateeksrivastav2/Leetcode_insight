@@ -73,36 +73,52 @@ const About = () => {
       Have questions, suggestions, or just want to say hello? Feel free to reach
       out to us on LinkedIn:
       <br />
-      <br />
-      <a
-        href="https://www.linkedin.com/in/prateek-srivastav-9131aa21b/"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ textDecoration: "none", color: "white" }}
-      >
-        <FontAwesomeIcon
-          className=""
-          size="2x"
-          style={{ cursor: "pointer", marginRight: "0.5vw" }}
-          icon={faLinkedinIn}
-        />
-        Prateek Srivastav
-      </a>
-      <br />
-      <a
-        href="https://www.linkedin.com/in/suyash-rawat-547876212/"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ textDecoration: "none", color: "white" }}
-      >
-        <FontAwesomeIcon
-          className=""
-          size="2x"
-          style={{ cursor: "pointer", marginRight: "0.5vw" }}
-          icon={faLinkedinIn}
-        />
-        Suyash Rawat
-      </a>
+      <div style={{ display: "flex", gap: "1vw",justifyContent:'center' }}>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/prateek-srivastav-9131aa21b/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              gap:'1vw'
+            }}
+          >
+            <FontAwesomeIcon
+              className=""
+              size="2x"
+              style={{ cursor: "pointer" }}
+              icon={faLinkedinIn}
+            />
+            Prateek Srivastav
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/suyash-rawat-547876212/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              gap:'1vw'
+            }}
+          >
+            <FontAwesomeIcon
+              className=""
+              size="2x"
+              style={{ cursor: "pointer" }}
+              icon={faLinkedinIn}
+            />
+            Suyash Rawat
+          </a>
+        </div>
+      </div>
       <br />
       <br /> Happy Leetcoding!
     </div>
