@@ -24,17 +24,33 @@ const EntryPage = () => {
     padding: 0,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflowY: 'hidden'
+    justifyContent: 'center', // Center vertically
+    alignItems: 'center', // Center horizontally
+    overflowY: 'hidden',
+    marginTop: '26vh',
+    marginLeft:'auto',
+    marginRight: 'auto',
+    marginBottom:'3vw'
   };
+
+  const footerStyles = {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    backgroundColor: '#333',
+    color: '#fff',
+    textAlign: 'center',
+    padding: '1vw',
+    
+  };
+
   useEffect(() => {
     setss(userId)
   })
-  
+
   const handleInputChange = (event) => {
     setUserId(event.target.value);
-    // setss(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -47,15 +63,7 @@ const EntryPage = () => {
 
   return (
     <>
-      <Container
-        style={{
-          // display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh', // Full height of the viewport
-          overflowY: 'hidden'
-        }}
-      >
+      <Container style={{ width: "100vw" }}>
         <div className="card" style={cardStyles}>
           <br />
           <h3 className="card-header">Enter Your LeetCode User ID</h3>
@@ -69,12 +77,9 @@ const EntryPage = () => {
                   value={userId}
                   onChange={handleInputChange}
                   required
-                  />
+                />
               </Form.Group>
               <br />
-                  <div>
-                    {ss}
-                  </div>
               <Button variant="primary" type="submit" block disabled={loader}>
                 Show Data
               </Button>
@@ -82,7 +87,11 @@ const EntryPage = () => {
               <br />
 
               <div style={{ display: loader ? "block" : "none" }}>
-                <img style={{ height: '10vw', width: '12vw' }} src="https://media.giphy.com/media/VEzBzSyEOKtXGuPIQw/giphy.gif?cid=790b761104n8iodytg9lsmfhhcsamzliam2m6o3g4vsrulof&ep=v1_stickers_search&rid=giphy.gif&ct=s" alt="" />
+                <img
+                  style={{ height: '10vw', width: '12vw' }}
+                  src="https://media.giphy.com/media/VEzBzSyEOKtXGuPIQw/giphy.gif?cid=790b761104n8iodytg9lsmfhhcsamzliam2m6o3g4vsrulof&ep=v1_stickers_search&rid=giphy.gif&ct=s"
+                  alt=""
+                />
                 <div className="text-white" style={{ display: "flex", flexDirection: "column" }}>
                   Loading...
                 </div>
@@ -90,14 +99,9 @@ const EntryPage = () => {
             </Form>
           </div>
         </div>
-        <div>
-
-        <footer className="text-white">
-          <p>
-            Copyright @ PsSr
-          </p>
+        <footer style={footerStyles}>
+          <p>Copyright @ PsSr</p>
         </footer>
-      </div>
       </Container>
     </>
   );

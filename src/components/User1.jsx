@@ -2,28 +2,29 @@ import React, { useContext, useState } from 'react'
 import leetcodedata from "../state/context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubAlt, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-const User1 = () => {
+const User1 = (props) => {
+    const { score } = props;
     const context = useContext(leetcodedata);
-    const { userdata,Contestdata } = context;
+    const { userdata, Contestdata } = context;
     const [userRating, setuserRating] = useState(0.0);
-    let rating=parseInt(userRating).toFixed(0);
+    let rating = parseInt(userRating).toFixed(0);
     const AvgRating = () => {
         return (
             <div>
-            {Contestdata.contestAttend !== 0 ? 
-            Contestdata.contestRating >= 1500 ?
-            <div>Average rating increase per contest : {((Contestdata.contestRating-1500) / Contestdata.contestAttend)}</div>
-            :
-            <div>Average rating decrease per contest : {((-Contestdata.contestRating+1500) / Contestdata.contestAttend)}</div>
-            :
-            ""
-    }
-        </div>
+                {Contestdata.contestAttend !== 0 ?
+                    Contestdata.contestRating >= 1500 ?
+                        <div>Average rating increase per contest : {((Contestdata.contestRating - 1500) / Contestdata.contestAttend)}</div>
+                        :
+                        <div>Average rating decrease per contest : {((-Contestdata.contestRating + 1500) / Contestdata.contestAttend)}</div>
+                    :
+                    ""
+                }
+            </div>
         );
     };
     return (
         <>
-           
+
             <div
                 style={{
                     display: "flex",
@@ -77,22 +78,29 @@ const User1 = () => {
                                 justifyContent: 'space-between',
                             }}>
                                 <a href={userdata.gitHub} target='_blank'>
-                                <FontAwesomeIcon
-                                    className=""
-                                    size="2x"
-                                    style={{ cursor: "pointer", marginRight: "1vw" }}
-                                    icon={faGithubAlt}
-                                /></a>
+                                    <FontAwesomeIcon
+                                        className=""
+                                        size="2x"
+                                        style={{ cursor: "pointer", marginRight: "1vw" }}
+                                        icon={faGithubAlt}
+                                    /></a>
                                 <a href={userdata.linkedIN} target='_blank'>
-                                <FontAwesomeIcon
-                                    className=""
-                                    size="2x"
-                                    style={{ cursor: "pointer" }}
-                                    icon={faLinkedinIn}
-                                /></a>
+                                    <FontAwesomeIcon
+                                        className=""
+                                        size="2x"
+                                        style={{ cursor: "pointer" }}
+                                        icon={faLinkedinIn}
+                                    /></a>
                             </div>
                         </div>
+                        <div>
+                            <button className="btn btn-success mx-3 my-2">
+                                Id Score: {localStorage.getItem("userId")}:{" "}
+                                {score.toFixed(2)}
+                            </button>
+                        </div>
                     </ul>
+
                 </div>
             </div>
         </>

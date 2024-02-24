@@ -12,10 +12,10 @@ import Scoregenerator from './components/Scoregenerator';
 function App() {
   return (
     <>
-    <Navbar/>
       {/* <Getdata2> */}
       <Getdata>
       <Router>
+    <Navbar/>
         <Routes>
           <Route exact path="/" element={<EntryPage />} />
           <Route exact path="/home" element={<Home />} />

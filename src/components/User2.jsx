@@ -2,8 +2,9 @@ import React, { useContext, useState } from 'react'
 import leetcodedata from "../state/context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubAlt, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-const User1 = () => {
+const User1 = (props) => {
     const context = useContext(leetcodedata);
+    const {score}=props;
     const { userdata2,Contestdata2 } = context;
     // const [userRating, setuserRating] = useState(0.0);
 
@@ -92,6 +93,12 @@ const User1 = () => {
                                     icon={faLinkedinIn}
                                 /></a>
                             </div>
+                        </div>
+                        <div>
+                        <button className="btn btn-success mx-3 my-2">
+                                Id Score: {localStorage.getItem("userId2")}:{" "}
+                                {score.toFixed(2)}
+                            </button>
                         </div>
                     </ul>
                 </div>
