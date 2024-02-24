@@ -21,8 +21,8 @@ const FetchData = (props) => {
     const fetchUserData = async () => {
         const storedUsername = String((localStorage.getItem('userId')).trim());
         if (storedUsername) {
-            console.log("storedUsername");
-            console.log(storedUsername);
+            // console.log("storedUsername");
+            // console.log(storedUsername);
             try {
                 let url =`https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}`; // Dynamically generate URL based on storedUsername
                 let urlsolve = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/solved`;
@@ -43,7 +43,7 @@ const FetchData = (props) => {
                 if (!responseData.ok) throw new Error(parsedData.message);
                 if (!responseData2.ok) throw new Error(parsedData2.message);
                 if (!responseData3.ok) throw new Error(parsedData3.message);
-                console.log(parsedData2);
+                // console.log(parsedData2);
     
                 setuserdata(parsedData);
                 setSolved(parsedData2);
@@ -90,7 +90,7 @@ const FetchData = (props) => {
             try {
                 let responseData = await fetch(url);
                 let parsedData = await responseData.json();
-                console.log(parsedData);
+                // console.log(parsedData);
 
                 if (!responseData.ok) throw new Error(parsedData.message);
 
@@ -126,8 +126,8 @@ const FetchData = (props) => {
     const fetchUserData2 = async () => {
         let storedUsername = localStorage.getItem('userId2');
         if (storedUsername) {
-            console.log("storedUsername");
-            console.log(storedUsername);
+            // console.log("storedUsername");
+            // console.log(storedUsername);
             try {
                 let url = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}`;
                 let urlsolve = `https://alfa-leetcode-api-kohz.onrender.com/${storedUsername}/solved`;
@@ -174,7 +174,7 @@ const FetchData = (props) => {
                 if (!responseData.ok) throw new Error(parsedData.message);
 
                 setContestdata2(parsedData);
-                console.log(parsedData);
+                // console.log(parsedData);
             } catch (error) {
                 window.location.replace('/');
                 console.log('Error fetching data:', error.message);
