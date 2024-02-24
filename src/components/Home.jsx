@@ -23,21 +23,111 @@ const Home = () => {
         setuserRating(formattedRating);
     }, []);
 
-    const Badge = ({ badge }) => (
-        <div key={badge.id}>
-            <img
-                src={
-                    badge.displayName === "Knight"
-                        ? "https://pic.leetcode-cn.com/1605256144-mculET-Knight.gif"
-                        : badge.icon
-                }
-                alt={badge.displayName}
-                style={{ width: "50px", height: "50px" }}
-            />
-            <p>{badge.displayName}</p>
-            <p>Creation Date: {badge.creationDate}</p>
-        </div>
-    );
+    const Badge = ({ badge }) => {
+        const getMonthImage = (monthNumber) =>
+            `https://leetcode.com/static/images/badges/dcc-2023-${monthNumber}.png`;
+    
+        return (
+            <div key={badge.id}>
+                {badge.displayName === "Jan LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(1)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Feb LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(2)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Mar LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(3)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Apr LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(4)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "May LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(5)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Jun LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(6)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Jul LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(7)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Aug LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(8)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Sep LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(9)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Oct LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(10)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Nov LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(11)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Dec LeetCoding Challenge" ? (
+                    <img
+                        src={getMonthImage(12)}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Knight" ? (
+                    <img
+                        src="https://pic.leetcode-cn.com/1605256144-mculET-Knight.gif"
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : badge.displayName === "Guardian" ? (
+                    <img
+                        src="https://leetcode.com/static/images/badges/guardian.png"
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                ) : (
+                    <img
+                        src={badge.icon.startsWith('/static') ? `https://leetcode.com${badge.icon}` : badge.icon}
+                        alt={badge.displayName}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                )}
+                <p>{badge.displayName}</p>
+                <p>Creation Date: {badge.creationDate}</p>
+            </div>
+        );
+    };
+    
+    
+    
 
     const UpcomingBadge = ({ upcomingBadge }) => (
         <div key={upcomingBadge.name}>
@@ -203,7 +293,7 @@ const Home = () => {
                                         : null}
                                 </div>
 
-                                <h5>Upcoming Badges:</h5>
+                                {/* <h5>Upcoming Badges:</h5>
                                 <div>
                                     {userBadges.upcomingBadges
                                         ? userBadges.upcomingBadges.map((upcomingBadge) => (
@@ -213,7 +303,7 @@ const Home = () => {
                                               />
                                           ))
                                         : null}
-                                </div>
+                                </div> */}
                             </>
                         ) : null}
                     </div>
