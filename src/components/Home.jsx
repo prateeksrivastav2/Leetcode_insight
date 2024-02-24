@@ -18,10 +18,10 @@ const Home = () => {
         const rating = Contestdata.contestRating;
         const formattedRating =
             rating !== undefined && rating !== null
-                ? parseFloat(rating.toFixed(0))
+                ? parseFloat(rating.toFixed(2))
                 : null;
         setuserRating(formattedRating);
-    }, []);
+    }, [localStorage.getItem('userId')]);
 
     const Badge = ({ badge }) => {
         const getMonthImage = (monthNumber) =>
@@ -229,7 +229,7 @@ const Home = () => {
                         </h4>
                         <p>{userdata.about}</p>
                         <p style={{display: userdata.birthday === null ? 'none' : ''}}>DOB: {userdata.birthday}</p>
-                        <p>Rating: {userRating}</p>
+                        {/* <p>Rating: {userRating}</p> */}
 
                         <POTDComponent data={potd} />
 

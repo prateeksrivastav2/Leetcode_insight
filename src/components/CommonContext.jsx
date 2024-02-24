@@ -59,7 +59,7 @@ const ContestComparison = ({ user1Contests, user2Contests }) => {
                       margin: "5px",
                       padding: "10px",
                       border: "1px solid #ccc",
-                      borderRadius: "5px",
+                      // borderRadius: "5px",
                       backgroundColor: "linear-gradient(to bottom, #333, #000)", // Background color for each row
 
                       boxShadow: "0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)",
