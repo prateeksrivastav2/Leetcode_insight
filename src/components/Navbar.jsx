@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const navbarStyles = {
     background: 'linear-gradient(to left, #333, #000)',
-    height: expanded ? '180px' : '60px',
+    height: expanded ? '30vh' : '10vh',
     transition: 'width 0.3s ease',
     width: expanded ? '100%' : '100%',
   };
