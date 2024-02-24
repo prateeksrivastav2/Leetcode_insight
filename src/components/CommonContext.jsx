@@ -14,18 +14,21 @@ const ContestComparison = ({ user1Contests, user2Contests }) => {
   );
 
   return (
-    <div style={{ color: "white", backgroundColor: "black",marginTop:'10vh'}}>
+    <div style={{ color: "white", backgroundColor: "black",marginTop:'10vh',marginLeft:'2vw',marginRight:'3vw',borderRadius:'8px'}}>
       {commonContests.length === 0 ? (
-        <div style={{ color: "white" }}>kuch common contests ni hai</div>
+        <div style={{ color: "white",marginRight:'2vw' }}>kuch common contests ni hai</div>
       ) : (
         <>
-        <h2 style={{ color: "white" }}>Common Contests and Rankings</h2>
-        <div style={{width:"100vw",display:'flex',justifyContent:'center',alignItems:'center' }}>
+        <h2 style={{ color: "white",marginRight:'2vw',paddingTop:'2vh' }}>Common Contests and Rankings</h2>
+        <div style={{width:"100vw",display:'flex',justifyContent:'center',alignItems:'center',marginRight:'2vw' }}>
           <table
             style={{
               color: "white",
               borderCollapse: "collapse",
               width: "100%",
+              marginRight:'6vw',
+              marginLeft:'1vw',
+              marginBottom:'1vw'
             }}
           >
             <thead>

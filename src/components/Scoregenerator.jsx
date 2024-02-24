@@ -133,13 +133,13 @@ const Scoregenerator = () => {
         <User1 score={finalScore1}/>
       </div>
       <div>
+        <CompareProblems />
+      </div>
+      <div>
         <ContestComparison
           user1Contests={Contestdata.contestParticipation}
           user2Contests={Contestdata2.contestParticipation}
         />
-      </div>
-      <div>
-        <CompareProblems />
       </div>
     </>
   );
