@@ -90,7 +90,7 @@ const EntryPage = () => {
 
               <div style={{ display: loader ? "block" : "none" }}>
                 <img
-                  style={{ height: '10vw', width: '12vw' }}
+                  style={{ height: '11vh', width: '12vw' }}
                   src="https://media.giphy.com/media/VEzBzSyEOKtXGuPIQw/giphy.gif?cid=790b761104n8iodytg9lsmfhhcsamzliam2m6o3g4vsrulof&ep=v1_stickers_search&rid=giphy.gif&ct=s"
                   alt=""
                 />

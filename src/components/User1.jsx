@@ -33,6 +33,7 @@ const User1 = (props) => {
                     boxSizing: "border-box",
                     width: "40vw",
                     marginTop: '2vw',
+                    // height:'0vh'
                 }}
             >
                 {/* First Div (20vw) */}
@@ -40,7 +41,7 @@ const User1 = (props) => {
                     className="firstdiv box card"
                     style={{
                         width: "50vw",
-                        height: "30vh",
+                        height: "50vh",
                         backgroundColor: "lightdark",
                         margin: "3vw 2vw 0vw 1vw",
                         boxShadow: "0 4px 8px rgba(0.1, 0.1, 0.3, 0.8)",
