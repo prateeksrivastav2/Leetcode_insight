@@ -48,11 +48,13 @@ const Solved = () => {
   };
 
   const mainstyles = {
-    alignItems:"center"
+    display:'flex',
+    alignItems:"center",
+    justifyContent:'center',
   };
 
   return (
-    <div style={mainstyles}>
+    <div className='forthecard' style={mainstyles}>
     <div className="card" style={cardStyles}>
       <br />
       <h3 className="card-header">Solved Questions</h3>
