@@ -176,7 +176,9 @@ const Home = () => {
             <h5>{questionTitle}</h5>
           </a>
         </div>
-        <div style={{ fontSize: "1rem" }}>Difficulty: {difficulty}</div>
+        <div style={{ fontSize: "1rem", margin: "0.5vh" }}>
+          Difficulty: {difficulty}
+        </div>
         {Contestdata.contestAttend !== 0 ? (
           Contestdata.contestRating >= 1500 ? (
             <div>
@@ -259,7 +261,13 @@ const Home = () => {
 
             <POTDComponent data={potd} />
 
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                margin: "0.5vh",
+              }}
+            >
               <div
                 style={{
                   display: "flex",

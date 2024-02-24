@@ -13,9 +13,9 @@ const User1 = (props) => {
             <div>
                 {Contestdata.contestAttend !== 0 ?
                     Contestdata.contestRating >= 1500 ?
-                        <div>Average rating increase per contest : {((Contestdata.contestRating - 1500) / Contestdata.contestAttend)}</div>
+                        <div style={{color:'green'}}>Average rating INCREASE per contest : {((Contestdata.contestRating - 1500) / Contestdata.contestAttend).toFixed(2)}</div>
                         :
-                        <div>Average rating decrease per contest : {((-Contestdata.contestRating + 1500) / Contestdata.contestAttend)}</div>
+                        <div style={{color:'red'}}>Average rating DECREASE per contest : {((-Contestdata.contestRating + 1500) / Contestdata.contestAttend).toFixed(2)}</div>
                     :
                     ""
                 }
@@ -71,12 +71,13 @@ const User1 = (props) => {
                         </h4>
                         <p>{userdata.about} </p>
                         <p style={{display:userdata.birthday === null ? 'none' : ''}}>DOB: {userdata.birthday}</p>
-                        <p>Rating:{Contestdata.contestRating}</p>
+                        <p>Contest rating:{parseInt(Contestdata.contestRating)}</p>
                         <AvgRating />
                         <div style={{ display: "flex",flexDirection:'row-reverse', justifyContent: "space-between" }}>
                             <div style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
+                                margin:'0.5vh'
                             }}>
                                 <a href={userdata.gitHub} target='_blank'
                                 style={{display : userdata.gitHub === null ? 'none' : ''}}>

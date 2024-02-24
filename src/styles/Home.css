@@ -61,6 +61,7 @@
     flex-direction: column !important;
     align-items: center;
     justify-content: center;
+    margin-top: 10vh !important;
   }
 
   .userInfo > div {
@@ -68,6 +69,10 @@
   }
   .userInfo .middlediv .div{
     width: 100vw;
+  }
+  .userInfo img{
+    width: 15vw !important;
+    height: 10vh !important;
   }
   .card{
     width: 100vw !important;
