@@ -3,6 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 const About = () => {
+    const footerStyles = {
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        backgroundColor: '#333',
+        color: '#fff',
+        textAlign: 'center',
+        padding: '10px',
+      };
   return (
     <div
       className="about"
@@ -57,8 +67,6 @@ const About = () => {
       - Gain insights into your LeetCode performance.
       <br />
       - Identify strengths and weaknesses in problem-solving.
-      <br />
-      - Connect with fellow coders for shared learning and friendly competition.
       <br />
       <br />
       <b>Future Plans</b>
@@ -121,6 +129,14 @@ const About = () => {
       </div>
       <br />
       <br /> Happy Leetcoding!
+      <br />
+      <br />
+      <br />
+      <footer className="text-white" style={footerStyles}>
+          <p>
+            Copyright @ PsSr
+          </p>
+        </footer>
     </div>
   );
 };
