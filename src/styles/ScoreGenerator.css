@@ -9,6 +9,12 @@
   @media (max-width: 768px) {
     .users {
       flex-direction: column !important;
+      >div{
+        width: 70vw !important;
+        >div >img{
+            width: 10vw !important;
+        }
+      }
     }
   }
   
