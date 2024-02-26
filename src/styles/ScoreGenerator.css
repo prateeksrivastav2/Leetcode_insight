@@ -1,0 +1,20 @@
+.users {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  @media (max-width: 768px) {
+    .users {
+      flex-direction: column !important;
+      >div{
+        width: 70vw !important;
+        >div >ul >img{
+            width: 10vw !important;
+        }
+      }
+    }
+  }
+  

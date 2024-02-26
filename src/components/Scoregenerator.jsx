@@ -4,6 +4,7 @@ import CompareProblems from "./CompareProblems";
 import ContestComparison from "./CommonContext";
 import User2 from "./user2";
 import User1 from "./User1";
+import "../styles/ScoreGenerator.css"
 
 const Scoregenerator = () => {
   const context = useContext(leetcodedata);
@@ -127,7 +128,7 @@ const Scoregenerator = () => {
 
   return (
     <>
-      <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+      <div className="users" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:'8vh'}}>
         <User2 score={finalScore2}/>
         
         <User1 score={finalScore1}/>
