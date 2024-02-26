@@ -39,7 +39,7 @@ const Contestdetails = () => {
 
     useEffect(() => {
         setDetails();
-        console.log(Contestdata);
+        ////console.log(Contestdata);
     }, [Contestdata]);
 
     useEffect(() => {

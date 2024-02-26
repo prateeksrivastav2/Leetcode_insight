@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import leetcodedata from "../state/context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubAlt, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-const User1 = (props) => {
+const User2 = (props) => {
     const context = useContext(leetcodedata);
     const {score}=props;
     const { userdata2,Contestdata2 } = context;
@@ -110,4 +110,4 @@ const User1 = (props) => {
     )
 }
 
-export default User1
+export default User2

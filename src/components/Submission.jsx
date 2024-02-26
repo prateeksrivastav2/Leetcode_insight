@@ -33,7 +33,7 @@ const Submission = () => {
     const usersubmission2 = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            console.log('abhi limit hai ',limit);
+            //console.log('abhi limit hai ',limit);
             let url = `http://localhost:6001/api/${storedUsername}/submission?limit=${parseInt(limit)}`;
             try {
                 let responseData = await fetch(url);
@@ -44,7 +44,7 @@ const Submission = () => {
                 setuserSubmissiondata(parsedData);
             } catch (error) {
                 window.location.replace('/');
-                console.log('Error fetching data:', error.message);
+                //console.log('Error fetching data:', error.message);
             }
         } else {
             window.location.replace('/');
@@ -54,7 +54,7 @@ const Submission = () => {
     const useracsubmission2 = async () => {
         let storedUsername = localStorage.getItem('userId');
         if (storedUsername) {
-            console.log('abhi limit hai ',limit);
+            //console.log('abhi limit hai ',limit);
             let url = `http://localhost:6001/api/${storedUsername}/acSubmission?limit=${parseInt(limit)}`;
             try {
                 let responseData = await fetch(url);
@@ -65,14 +65,14 @@ const Submission = () => {
                 setuseracSubmissiondata(parsedData);
             } catch (error) {
                 window.location.replace('/');
-                console.log('Error fetching data:', error.message);
+                //console.log('Error fetching data:', error.message);
             }
         } else {
             window.location.replace('/');
         }
     };
     const handleSubmissionForLimitChange =async () => {
-        console.log('limit change mei toh agay',newLimit)
+        //console.log('limit change mei toh agay',newLimit)
         let x=parseInt(newLimit,10)
         setLimit(x);
         // setQuestion([]);
@@ -81,7 +81,7 @@ const Submission = () => {
         await usersubmission2();
         setQuestion([]);
         setQuestiondata(userSubmissiondata);
-        console.log(Questiondata)
+        //console.log(Questiondata)
         storeQuestion();
     };
 

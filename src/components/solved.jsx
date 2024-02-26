@@ -11,8 +11,8 @@ const Solved = () => {
   const { userSolved } = context;
 
   useEffect(() => {
-    // console.log("user");
-    // console.log(userSolved);
+    // //console.log("user");
+    // //console.log(userSolved);
   }, [userSolved]);
 
   const data = {

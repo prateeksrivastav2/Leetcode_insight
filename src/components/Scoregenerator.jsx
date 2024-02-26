@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import leetcodedata from "../state/context";
 import CompareProblems from "./CompareProblems";
 import ContestComparison from "./CommonContext";
-import User2 from "./user2";
+import User2 from "./User2";
 import User1 from "./User1";
 import "../styles/ScoreGenerator.css"
 

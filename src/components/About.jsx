@@ -19,7 +19,7 @@ const About = () => {
       style={{
         marginTop: "8vh",
         color: "white",
-        fontSize: "2vh",
+        fontSize: "0.9rem",
         background: "linear-gradient(to left, #333, #000)",
         padding: "2vw",
       }}
